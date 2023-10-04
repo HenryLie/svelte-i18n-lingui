@@ -13,5 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+msgid "defineMessage text"
+msgstr "メッセージ定義 テキスト"
+
 msgid "hello"
 msgstr "こんにちは"
+
+msgid "Hello, {0}!"
+msgstr "こんにちは、{0}！"
+
+msgid "msgSvelte"
+msgstr "メッセージ スベルテ"
+
+msgid "test ts"
+msgstr "テスト タイプスクリプト"
+
+msgid "world"
+msgstr "世界"

@@ -31,7 +31,6 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"@lingui/cli": "^4.5.0",
 		"@lingui/core": "^4.5.0",
 		"svelte": "^4.0.0"
 	},
@@ -60,5 +59,8 @@
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"acorn": "^8.10.0"
+	}
 }

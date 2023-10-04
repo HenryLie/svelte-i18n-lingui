@@ -1,1 +1,1 @@
-/*eslint-disable*/export const messages=JSON.parse("{\"hello\":\"こんにちは\"}");
+/*eslint-disable*/export const messages=JSON.parse("{\"{0}\":[[\"0\"]],\"msg\":\"msg\",\"defineMessage text\":\"メッセージ定義 テキスト\",\"hello\":\"こんにちは\",\"Hello {0} parameterized 0 {1}{2} 1\":[\"Hello \",[\"0\"],\" parameterized 0 \",[\"1\"],[\"2\"],\" 1\"],\"Hello, {0}!\":[\"こんにちは、\",[\"0\"],\"！\"],\"msgSvelte\":\"メッセージ スベルテ\",\"test ts\":\"テスト タイプスクリプト\",\"world\":\"世界\"}");

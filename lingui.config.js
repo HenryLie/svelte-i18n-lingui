@@ -3,8 +3,7 @@
  */
 
 import { formatter } from '@lingui/format-po';
-import { extractor as defaultExtractor } from '@lingui/cli/api';
-import { svelteExtractor } from './src/lib/extractor.js';
+import { jstsExtractor, svelteExtractor } from './src/lib/extractor.js';
 
 /**
  * @type {LinguiConfig}
@@ -18,8 +17,7 @@ const config = {
 		}
 	],
 	format: formatter({ origins: false, explicitIdAsDefault: true }),
-	// TODO: Add extractor for custom tagged template literals in js/ts files
-	extractors: [defaultExtractor, svelteExtractor]
+	extractors: [jstsExtractor, svelteExtractor]
 };
 
 export default config;
