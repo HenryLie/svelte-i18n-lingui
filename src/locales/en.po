@@ -13,6 +13,9 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#~ msgid "{num, plural, one {There is a message.} other {There are # messages.}}"
+#~ msgstr ""
+
 msgid "defineMessage text"
 msgstr ""
 

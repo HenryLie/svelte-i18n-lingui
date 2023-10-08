@@ -8,40 +8,47 @@ function createLocale() {
 		subscribe,
 		set: async (locale) => {
 			const { messages } = await import(`/src/locales/${locale}.ts`);
-			i18n.load(locale, messages);
-			i18n.activate(locale);
+			i18n.loadAndActivate({ locale, messages });
 			set(locale);
 		}
 	};
 }
 export const locale = createLocale();
 
-export const t = derived(locale, () => (val, ...args) => {
+export const t = derived(locale, () => (strings, ...args) => {
 	// For parsing defineMsg directly through "$t(variableName)"
-	if (typeof val === 'string') {
-		return i18n.t(/*i18n*/ { id: val, message: val });
+	if (typeof strings === 'string') {
+		return i18n.t(/*i18n*/ { id: strings, message: strings });
 	}
 
-	let message = val[0];
+	let message = strings[0];
 	args.forEach((_arg, i) => {
-		message += `{${i}}` + val[i + 1];
+		message += `{${i}}` + strings[i + 1];
 	});
 	const values = { ...args };
 
 	return i18n.t(/*i18n*/ { id: message, message, values });
 });
 
-export const g = (val, ...args) => {
+export const g = (strings, ...args) => {
 	// TODO: Extract this part to a reusable function
-	let message = val[0];
+	let message = strings[0];
 	args.forEach((_arg, i) => {
-		message += `{${i}}` + val[i + 1];
+		message += `{${i}}` + strings[i + 1];
 	});
 	const values = { ...args };
 
 	return i18n.t(/*i18n*/ { id: message, message, values });
 };
 
-export const msg = (val, ...args) => {
-	return String.raw(val, ...args);
-};
+export const msg = (strings, ...args) => String.raw({ raw: strings }, ...args);
+
+export const plural = derived(locale, () => (num, variations) => {
+	let pluralOptions = '';
+	Object.entries(variations).forEach(([key, value]) => {
+		pluralOptions += ` ${key} {${value}}`;
+	});
+	const message = `{num, plural,${pluralOptions}}`;
+
+	return i18n.t(/*i18n*/ { id: message, message, values: { num } });
+});

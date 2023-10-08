@@ -10,6 +10,7 @@ import { jstsExtractor, svelteExtractor } from './src/lib/extractor.js';
  */
 const config = {
 	locales: ['en', 'ja'],
+	sourceLocale: 'en',
 	catalogs: [
 		{
 			path: 'src/locales/{locale}',
