@@ -23,31 +23,41 @@ msgstr ""
 #~ msgstr ""
 
 #. This is a comment for the translator
+#: src/routes/+page.svelte:68
 msgid "Commented message"
 msgstr "Commented message"
 
+#: src/routes/+page.js:3
 msgid "defineMessage text"
 msgstr "defineMessage text"
 
+#: src/routes/+page.svelte:33
 msgid "hello"
 msgstr "hello"
 
+#: src/routes/+page.svelte:34
+#: src/routes/+page.svelte:42
 msgid "Hello, {0}!"
 msgstr "Hello, {0}!"
 
+#: src/routes/+page.svelte:56
 msgctxt "A"
 msgid "Message with context"
 msgstr "Message with context"
 
+#: src/routes/+page.svelte:62
 msgctxt "B"
 msgid "Message with context"
 msgstr "Message with context"
 
+#: src/routes/+page.svelte:11
 msgid "msgSvelte"
 msgstr "msgSvelte"
 
+#: src/lib/random.ts:3
 msgid "test ts"
 msgstr "test ts"
 
+#: src/routes/+page.svelte:34
 msgid "world"
 msgstr "world"

@@ -69,7 +69,7 @@
 </p>
 <p>Interpolation inside component</p>
 
-<!--TODO: Future-->
+<!-- Future features -->
 <p>Select</p>
 <p>Datetime</p>
 <p>Number</p>

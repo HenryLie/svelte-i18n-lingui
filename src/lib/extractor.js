@@ -5,12 +5,12 @@
 // import fs from 'fs';
 import { preprocess, parse, walk } from 'svelte/compiler';
 import sveltePreprocess from 'svelte-preprocess';
-import { Parser } from 'acorn';
+import { Parser as Acorn } from 'acorn';
 import { generateMessageId } from './generateMessageId.js';
 
 const extractFromTaggedTemplate = (node, filename, onMessageExtracted) => {
-	// NOTE: `node.quasi.loc` is for extraction from svelte files, and `node.quasi` is for extraction from js/ts files
-	const { start } = node.quasi?.loc ?? node.quasi;
+	// `node.quasi.loc` is for extraction from svelte files, and `node.quasi` is for extraction from js/ts files
+	const { start } = node.quasi.loc;
 	const rawQuasis = node.quasi.quasis.map((q) => q.value.raw);
 	let message = rawQuasis[0];
 	rawQuasis.slice(1).forEach((q, i) => {
@@ -93,7 +93,12 @@ export const jstsExtractor = {
 	},
 	async extract(filename, source, onMessageExtracted, _ctx) {
 		try {
-			const ast = Parser.parse(source, { filename, sourceType: 'module', ecmaVersion: 2020 });
+			const ast = Acorn.parse(source, {
+				filename,
+				sourceType: 'module',
+				ecmaVersion: 2020,
+				locations: true
+			});
 
 			// fs.writeFileSync('ast.json', JSON.stringify(ast, null, 2));
 
