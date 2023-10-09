@@ -99,6 +99,24 @@ const extractPluralMessages = (tags, node, filename, onMessageExtracted) => {
 	}
 };
 
+const extractComponent = (node, filename, onMessageExtracted) => {
+	if (node.type === 'InlineComponent' && node.name === 'T') {
+		const { start } = node; // FIXME: Find out why Loc is not printed here, causing this to be incorrect
+		const { attributes } = node;
+		const message = attributes.find((a) => a.name === 'msg')?.value[0].data;
+		const context = attributes.find((a) => a.name === 'ctx')?.value[0].data;
+		const comment = attributes.find((a) => a.name === 'cmt')?.value[0].data;
+
+		onMessageExtracted({
+			id: generateMessageId(message, context),
+			message,
+			context,
+			comment,
+			origin: [filename, start.line, start.column]
+		});
+	}
+};
+
 /**
  * @type {ExtractorType}
  */
@@ -123,6 +141,7 @@ export const svelteExtractor = {
 					extractTags(['$t', 'msg'], node, filename, onMessageExtracted);
 					extractPlurals(['$plural'], node, filename, onMessageExtracted);
 					extractPluralMessages(['definePlural'], node, filename, onMessageExtracted);
+					extractComponent(node, filename, onMessageExtracted);
 				}
 			});
 		} catch (err) {

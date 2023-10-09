@@ -18,15 +18,21 @@ msgid "{num, plural, =5 {five items} one {# item} other {# items}}"
 msgstr "{num, plural, =5 {五個} =1 {一個} other {#個}}"
 
 #: src/routes/+page.js:11
-#~ msgid "{num, plural, one {# item} other {# items}}"
-#~ msgstr "{num, plural, other {#個}}"
+msgid "{num, plural, one {# item} other {# items}}"
+msgstr "{num, plural, other {#個}}"
 
-#: src/routes/+page.svelte:49
+#: src/routes/+page.svelte:51
 msgid "{num, plural, one {There is # message.} other {There are # messages.}}"
 msgstr "{num, plural, =0 {メッセージはありません。} other {メッセージは#件あります。}}"
 
+#. Comment for translator
+#: src/routes/+page.svelte:
+msgctxt "ABC"
+msgid "Click # to learn more"
+msgstr "#をクリックして詳細知る"
+
 #. This is a comment for the translator
-#: src/routes/+page.svelte:78
+#: src/routes/+page.svelte:80
 msgid "Commented message"
 msgstr "コメント付きメッセージ"
 
@@ -34,33 +40,37 @@ msgstr "コメント付きメッセージ"
 msgid "defineMessage text"
 msgstr "メッセージ定義 テキスト"
 
-#: src/routes/+page.svelte:34
+#: src/routes/+page.svelte:37
 msgid "hello"
 msgstr "こんにちは"
 
-#: src/routes/+page.svelte:35
-#: src/routes/+page.svelte:43
+#: src/routes/+page.svelte:38
+#: src/routes/+page.svelte:46
 msgid "Hello, {0}!"
 msgstr "こんにちは、{0}！"
 
-#: src/routes/+page.svelte:66
+#: src/routes/+page.svelte:68
 msgctxt "A"
 msgid "Message with context"
 msgstr "コンテキストA"
 
-#: src/routes/+page.svelte:72
+#: src/routes/+page.svelte:74
 msgctxt "B"
 msgid "Message with context"
 msgstr "コンテキストB"
 
-#: src/routes/+page.svelte:13
+#: src/routes/+page.svelte:14
 msgid "msgSvelte"
 msgstr "メッセージ スベルテ"
+
+#: src/routes/+page.svelte:85
+msgid "Svelte tutorial"
+msgstr ""
 
 #: src/lib/random.ts:3
 msgid "test ts"
 msgstr "テスト タイプスクリプト"
 
-#: src/routes/+page.svelte:35
+#: src/routes/+page.svelte:38
 msgid "world"
 msgstr "世界"

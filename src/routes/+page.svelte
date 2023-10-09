@@ -1,6 +1,7 @@
 <script>
 	import { locale, t, msg, plural } from '$lib/store.js';
 	import { getText } from '$lib/random.ts';
+	import T from '$lib/T.svelte';
 
 	export let data;
 
@@ -44,7 +45,6 @@
 </p>
 <p>DefineMessage in Svelte files: {consumeMsg}</p>
 
-<!-- TODO: Extract from plural functions -->
 <p>
 	Plurals: {$plural(count, {
 		one: 'There is # message.',
@@ -77,7 +77,12 @@
 <p>
 	Comment: {$t({ message: 'Commented message', comment: 'This is a comment for the translator' })}
 </p>
-<p>Interpolation inside component</p>
+<p>
+	Interpolation inside component:
+	<T msg="Click # to learn more" ctx="ABC" cmt="Comment for translator">
+		<a href="https://svelte.dev/tutorial" target="_blank">{$t`Svelte tutorial`}</a>
+	</T>
+</p>
 
 <!-- Future features -->
 <p>Select</p>
