@@ -13,17 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#~ msgid "{num, plural, =2 {two} other {unknown}}"
-#~ msgstr ""
+#: src/routes/+page.js:4
+msgid "{num, plural, =5 {five items} one {# item} other {# items}}"
+msgstr "{num, plural, =5 {five items} one {# item} other {# items}}"
 
-#~ msgid "{num, plural, one {There is a message.} other {There are {0} messages.}}"
-#~ msgstr ""
-
-#~ msgid "{num, plural, one {There is a message.} other {There are # messages.}}"
-#~ msgstr ""
+#: src/routes/+page.svelte:57
+msgid "{num, plural, one {There is # message.} other {There are # messages.}}"
+msgstr "{num, plural, one {There is # message.} other {There are # messages.}}"
 
 #. This is a comment for the translator
-#: src/routes/+page.svelte:68
+#: src/routes/+page.svelte:78
 msgid "Commented message"
 msgstr "Commented message"
 
@@ -31,26 +30,26 @@ msgstr "Commented message"
 msgid "defineMessage text"
 msgstr "defineMessage text"
 
-#: src/routes/+page.svelte:33
+#: src/routes/+page.svelte:42
 msgid "hello"
 msgstr "hello"
 
-#: src/routes/+page.svelte:34
-#: src/routes/+page.svelte:42
+#: src/routes/+page.svelte:43
+#: src/routes/+page.svelte:51
 msgid "Hello, {0}!"
 msgstr "Hello, {0}!"
 
-#: src/routes/+page.svelte:56
+#: src/routes/+page.svelte:66
 msgctxt "A"
 msgid "Message with context"
 msgstr "Message with context"
 
-#: src/routes/+page.svelte:62
+#: src/routes/+page.svelte:72
 msgctxt "B"
 msgid "Message with context"
 msgstr "Message with context"
 
-#: src/routes/+page.svelte:11
+#: src/routes/+page.svelte:20
 msgid "msgSvelte"
 msgstr "msgSvelte"
 
@@ -58,6 +57,6 @@ msgstr "msgSvelte"
 msgid "test ts"
 msgstr "test ts"
 
-#: src/routes/+page.svelte:34
+#: src/routes/+page.svelte:43
 msgid "world"
 msgstr "world"

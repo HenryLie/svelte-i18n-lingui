@@ -48,9 +48,32 @@ const extractTags = (tags, node, filename, onMessageExtracted) => {
 	} else if (
 		node.type === 'CallExpression' &&
 		tags.includes(node.callee.name) &&
-		node.arguments?.[0].type === 'ObjectExpression'
+		node.arguments[0].type === 'ObjectExpression'
 	) {
 		extractFromCallExpression(node, filename, onMessageExtracted);
+	}
+};
+
+const extractPlurals = (tags, node, filename, onMessageExtracted) => {
+	if (
+		node.type === 'CallExpression' &&
+		tags.includes(node.callee.name) &&
+		node.arguments[1].type === 'ObjectExpression'
+	) {
+		const { start } = node.loc;
+		const { properties } = node.arguments[1];
+
+		const message = `{num, plural, ${properties
+			// key will use the "name" property for normal properties, and "value" property for exact matches
+			.map((p) => `${p.key.name ?? p.key.value} {${p.value.value}}`)
+			.join(' ')}}`;
+
+		onMessageExtracted({
+			id: generateMessageId(message),
+			message,
+			origin: [filename, start.line, start.column]
+			// The actual number's value doesn't matter when extracting so we don't have to supply it
+		});
 	}
 };
 
@@ -76,6 +99,7 @@ export const svelteExtractor = {
 			walk(ast, {
 				enter(node, _parent, _prop, _index) {
 					extractTags(['$t', 'msg'], node, filename, onMessageExtracted);
+					extractPlurals(['$plural'], node, filename, onMessageExtracted);
 				}
 			});
 		} catch (err) {
@@ -105,6 +129,7 @@ export const jstsExtractor = {
 			walk(ast, {
 				enter(node, _parent, _prop, _index) {
 					extractTags(['g', 'msg'], node, filename, onMessageExtracted);
+					extractPlurals(['gplural'], node, filename, onMessageExtracted);
 				}
 			});
 		} catch (err) {

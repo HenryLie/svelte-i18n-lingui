@@ -1,23 +1,25 @@
 <script>
-	import { locale, t, msg, plural } from '$lib/store.js';
+	import { locale, t, msg, plural, gplural } from '$lib/store.js';
 	import { getText } from '$lib/random.ts';
 
 	export let data;
 
-	const { msgText } = data;
+	const { msgText, gPluralText } = data;
+
+	let count = 0;
 
 	let local;
+	let gp;
 
 	const msgInSvelte = msg`msgSvelte`;
 
 	$: {
 		$locale;
+		count;
 		local = getText();
 	}
 
 	$: consumeMsg = $t(msgInSvelte);
-
-	let count = 0;
 </script>
 
 <h2>Current locale: {$locale}</h2>
@@ -46,9 +48,15 @@
 <!-- TODO: Extract from plural functions -->
 <p>
 	Plurals: {$plural(count, {
-		one: 'There is a message.',
+		one: 'There is # message.',
 		other: 'There are # messages.'
 	})}
+</p>
+<p>
+	GPlurals:
+	{#key $locale}
+		{gPluralText(count)}
+	{/key}
 </p>
 <p>
 	Context:
@@ -76,11 +84,12 @@
 <!-- NOTE: Might need to extract the variable name used to pass in the number -->
 <!--  so that it can be differentiated from the nested plural number -->
 <p>
-	Nested Plurals: {$plural(count, {
-		one: 'There is a message.',
-		other: $plural(count, {
-			'=2': 'There are two messages',
-			other: 'There are other than two messages'
-		})
-	})}
+	Nested Plurals:
+	<!--  {$plural(count, { -->
+	<!-- 	one: 'There is a message.', -->
+	<!-- 	other: $plural(count, { -->
+	<!-- 		'=2': 'There are two messages', -->
+	<!-- 		other: 'There are other than two messages' -->
+	<!-- 	}) -->
+	<!-- })} -->
 </p>
