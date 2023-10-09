@@ -1,15 +1,14 @@
 <script>
-	import { locale, t, msg, plural, gplural } from '$lib/store.js';
+	import { locale, t, msg, plural } from '$lib/store.js';
 	import { getText } from '$lib/random.ts';
 
 	export let data;
 
-	const { msgText, gPluralText } = data;
+	const { msgText, gPluralText, definePluralText } = data;
 
 	let count = 0;
 
 	let local;
-	let gp;
 
 	const msgInSvelte = msg`msgSvelte`;
 
@@ -57,6 +56,9 @@
 	{#key $locale}
 		{gPluralText(count)}
 	{/key}
+</p>
+<p>
+	Define plural: {$plural(count, definePluralText)}
 </p>
 <p>
 	Context:

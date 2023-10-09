@@ -50,14 +50,18 @@ const processTaggedLiteral = (descriptor, ...args) => {
 	return i18n.t({ id, message, values });
 };
 
-const processPlural = (num, variations) => {
+const buildPluralMessages = (variations) => {
 	let pluralOptions = '';
 	Object.entries(variations).forEach(([key, value]) => {
 		pluralOptions += ` ${key} {${value}}`;
 	});
-	const message = `{num, plural,${pluralOptions}}`;
+	return `{num, plural,${pluralOptions}}`;
+};
 
-	return i18n.t({ id: generateMessageId(message), message, values: { num } });
+const processPlural = (num, variations) => {
+	const message = buildPluralMessages(variations);
+	const id = generateMessageId(message);
+	return i18n.t({ id, message, values: { num } });
 };
 
 export const msg = (descriptor, ...args) => {
@@ -73,4 +77,5 @@ export const t = derived(locale, () => processTaggedLiteral);
 export const g = processTaggedLiteral;
 
 export const plural = derived(locale, () => processPlural);
-export const gplural = processPlural;
+export const gPlural = processPlural;
+export const definePlural = (variations) => variations;
