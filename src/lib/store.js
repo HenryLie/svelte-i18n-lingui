@@ -1,13 +1,16 @@
 import { writable, derived } from 'svelte/store';
 import { i18n } from '@lingui/core';
+import { messages as defaultMessages } from '../locales/en.ts';
 
 function createLocale() {
-	const { subscribe, set } = writable('en');
+	const defaultLocale = 'en';
+	const { subscribe, set } = writable(defaultLocale);
+	i18n.loadAndActivate({ locale: defaultLocale, messages: defaultMessages });
 
 	return {
 		subscribe,
 		set: async (locale) => {
-			const { messages } = await import(`/src/locales/${locale}.ts`);
+			const { messages } = await import(`../locales/${locale}.ts`);
 			i18n.loadAndActivate({ locale, messages });
 			set(locale);
 		}
