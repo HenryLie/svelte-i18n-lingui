@@ -22,6 +22,10 @@ msgstr ""
 #~ msgid "{num, plural, one {There is a message.} other {There are # messages.}}"
 #~ msgstr ""
 
+#. This is a comment for the translator
+msgid "Commented message"
+msgstr "Commented message"
+
 msgid "defineMessage text"
 msgstr "defineMessage text"
 
@@ -30,6 +34,14 @@ msgstr "hello"
 
 msgid "Hello, {0}!"
 msgstr "Hello, {0}!"
+
+msgctxt "A"
+msgid "Message with context"
+msgstr "Message with context"
+
+msgctxt "B"
+msgid "Message with context"
+msgstr "Message with context"
 
 msgid "msgSvelte"
 msgstr "msgSvelte"

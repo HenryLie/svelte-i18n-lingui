@@ -19,10 +19,21 @@ function createLocale() {
 }
 export const locale = createLocale();
 
-const processTaggedLiteral = (strings, ...args) => {
-	let message = strings[0];
+const processTaggedLiteral = (descriptor, ...args) => {
+	// For parsing plain strings marked by defineMessage (msg``)"
+	if (typeof descriptor === 'string') {
+		const id = generateMessageId(descriptor);
+		return i18n.t({ id, message: descriptor });
+	}
+
+	if ('message' in descriptor) {
+		const id = generateMessageId(descriptor.message, descriptor.context);
+		return i18n.t({ id, ...descriptor });
+	}
+
+	let message = descriptor[0];
 	args.forEach((_arg, i) => {
-		message += `{${i}}` + strings[i + 1];
+		message += `{${i}}` + descriptor[i + 1];
 	});
 	const id = generateMessageId(message);
 	const values = { ...args };
@@ -30,21 +41,14 @@ const processTaggedLiteral = (strings, ...args) => {
 	return i18n.t({ id, message, values });
 };
 
-export const t = derived(locale, () => (strings, ...args) => {
-	// TODO: Include this in the base logic, this is also needed on g
-	// For parsing defineMsg directly through "$t(variableName)"
-	if (typeof strings === 'string') {
-		const id = generateMessageId(strings);
-		return i18n.t({ id, message: strings });
-	}
+export const t = derived(
+	locale,
+	() =>
+		(descriptor, ...args) =>
+			processTaggedLiteral(descriptor, ...args)
+);
 
-	// TODO: check if type is MessageDescriptor
-	return processTaggedLiteral(strings, ...args);
-});
-
-export const g = (strings, ...args) => {
-	return processTaggedLiteral(strings, ...args);
-};
+export const g = (descriptor, ...args) => processTaggedLiteral(descriptor, ...args);
 
 export const msg = (strings, ...args) => String.raw({ raw: strings }, ...args);
 
