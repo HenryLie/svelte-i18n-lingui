@@ -43,11 +43,11 @@ const extractFromCallExpression = (node, filename, onMessageExtracted) => {
 };
 
 const extractTags = (tags, node, filename, onMessageExtracted) => {
-	if (tags.includes(node.tag?.name) && node.type === 'TaggedTemplateExpression') {
+	if (node.type === 'TaggedTemplateExpression' && tags.includes(node.tag.name)) {
 		extractFromTaggedTemplate(node, filename, onMessageExtracted);
 	} else if (
-		tags.includes(node.callee?.name) &&
 		node.type === 'CallExpression' &&
+		tags.includes(node.callee.name) &&
 		node.arguments?.[0].type === 'ObjectExpression'
 	) {
 		extractFromCallExpression(node, filename, onMessageExtracted);
