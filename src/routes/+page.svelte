@@ -2,6 +2,7 @@
 	import { locale, t, msg, plural } from '$lib/store.js';
 	import { getText } from '$lib/random.ts';
 	import T from '$lib/T.svelte';
+  import TestComponent from '$lib/TestComponent.svelte';
 
 	export let data;
 
@@ -81,6 +82,10 @@
 	Interpolation inside component:
 	<T msg="Click # to learn more" ctx="ABC" cmt="Comment for translator">
 		<a href="https://svelte.dev/tutorial" target="_blank">{$t`Svelte tutorial`}</a>
+	</T>
+  <br>
+	<T msg="Click # to learn more" ctx="ABC" cmt="Comment for translator">
+    <TestComponent />
 	</T>
 </p>
 
