@@ -1,6 +1,7 @@
 import { writable, derived } from 'svelte/store';
 import { i18n } from '@lingui/core';
 import { messages as defaultMessages } from '../locales/en.ts';
+import { generateMessageId } from './generateMessageId.js';
 
 function createLocale() {
 	const defaultLocale = 'en';
@@ -18,30 +19,31 @@ function createLocale() {
 }
 export const locale = createLocale();
 
-export const t = derived(locale, () => (strings, ...args) => {
-	// For parsing defineMsg directly through "$t(variableName)"
-	if (typeof strings === 'string') {
-		return i18n.t(/*i18n*/ { id: strings, message: strings });
-	}
-
+const processTaggedLiteral = (strings, ...args) => {
 	let message = strings[0];
 	args.forEach((_arg, i) => {
 		message += `{${i}}` + strings[i + 1];
 	});
+	const id = generateMessageId(message);
 	const values = { ...args };
 
-	return i18n.t(/*i18n*/ { id: message, message, values });
+	return i18n.t({ id, message, values });
+};
+
+export const t = derived(locale, () => (strings, ...args) => {
+	// TODO: Include this in the base logic, this is also needed on g
+	// For parsing defineMsg directly through "$t(variableName)"
+	if (typeof strings === 'string') {
+		const id = generateMessageId(strings);
+		return i18n.t({ id, message: strings });
+	}
+
+	// TODO: check if type is MessageDescriptor
+	return processTaggedLiteral(strings, ...args);
 });
 
 export const g = (strings, ...args) => {
-	// TODO: Extract this part to a reusable function
-	let message = strings[0];
-	args.forEach((_arg, i) => {
-		message += `{${i}}` + strings[i + 1];
-	});
-	const values = { ...args };
-
-	return i18n.t(/*i18n*/ { id: message, message, values });
+	return processTaggedLiteral(strings, ...args);
 };
 
 export const msg = (strings, ...args) => String.raw({ raw: strings }, ...args);
@@ -53,5 +55,5 @@ export const plural = derived(locale, () => (num, variations) => {
 	});
 	const message = `{num, plural,${pluralOptions}}`;
 
-	return i18n.t(/*i18n*/ { id: message, message, values: { num } });
+	return i18n.t({ id: generateMessageId(message), message, values: { num } });
 });

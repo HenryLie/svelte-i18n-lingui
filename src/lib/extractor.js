@@ -5,6 +5,7 @@
 import { preprocess, parse, walk } from 'svelte/compiler';
 import sveltePreprocess from 'svelte-preprocess';
 import { Parser } from 'acorn';
+import { generateMessageId } from './generateMessageId.js';
 
 /**
  * @type {ExtractorType}
@@ -33,8 +34,8 @@ export const svelteExtractor = {
 							message += `{${i}}${q}`;
 						});
 						onMessageExtracted({
-							id: message,
-							message: message,
+							id: generateMessageId(message),
+							message,
 							context: undefined,
 							comment: undefined,
 							origin: [filename, start.line, start.column]
@@ -69,8 +70,8 @@ export const jstsExtractor = {
 							message += `{${i}}${q}`;
 						});
 						onMessageExtracted({
-							id: message,
-							message: message,
+							id: generateMessageId(message),
+							message,
 							context: undefined,
 							comment: undefined,
 							origin: [filename, start.line, start.column]

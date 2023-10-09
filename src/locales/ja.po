@@ -13,6 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#~ msgid "{num, plural, =2 {two} other {unknown}}"
+#~ msgstr ""
+
+#~ msgid "{num, plural, one {There is a message.} other {num, plural, one {There is a message.} other {There are {0} messages.}}}"
+#~ msgstr "{num, plural, =0 {メッセージがありません。} other {{0}メッセージがあります。}}"
+
+#~ msgid "{num, plural, one {There is a message.} other {There are # messages.}}"
+#~ msgstr "{num, plural, =0 {メッセージがありません。} other {メッセージがあります。}}"
+
 msgid "defineMessage text"
 msgstr "メッセージ定義 テキスト"
 
@@ -30,7 +39,3 @@ msgstr "テスト タイプスクリプト"
 
 msgid "world"
 msgstr "世界"
-
-msgid "{num, plural, one {There is a message.} other {There are # messages.}}"
-msgstr "{num, plural, other {メッセージがあります。}}"
-

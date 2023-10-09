@@ -17,7 +17,7 @@ const config = {
 			include: ['src/lib', 'src/routes']
 		}
 	],
-	format: formatter({ origins: false, explicitIdAsDefault: true }),
+	format: formatter({ origins: false }),
 	extractors: [jstsExtractor, svelteExtractor]
 };
 

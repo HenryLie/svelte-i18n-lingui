@@ -42,6 +42,7 @@
 	Parameterized defineMessage text import: {$t`Hello, ${$t(msgText)}!`}
 </p>
 <p>DefineMessage in Svelte files: {consumeMsg}</p>
+<!-- TODO: Extract from plural functions -->
 <p>
 	Plurals: {$plural(count, {
 		one: 'There is a message.',
@@ -49,6 +50,6 @@
 	})}
 </p>
 <p>Context</p>
+<p>Interpolation inside component</p>
 <!--TODO: try using recursive tagged template literal for comments? -->
 <p>Comment</p>
-<p>Interpolation inside component</p>

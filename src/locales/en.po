@@ -13,23 +13,29 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#~ msgid "{num, plural, =2 {two} other {unknown}}"
+#~ msgstr ""
+
+#~ msgid "{num, plural, one {There is a message.} other {There are {0} messages.}}"
+#~ msgstr ""
+
 #~ msgid "{num, plural, one {There is a message.} other {There are # messages.}}"
 #~ msgstr ""
 
 msgid "defineMessage text"
-msgstr ""
+msgstr "defineMessage text"
 
 msgid "hello"
-msgstr ""
+msgstr "hello"
 
 msgid "Hello, {0}!"
-msgstr ""
+msgstr "Hello, {0}!"
 
 msgid "msgSvelte"
-msgstr ""
+msgstr "msgSvelte"
 
 msgid "test ts"
-msgstr ""
+msgstr "test ts"
 
 msgid "world"
-msgstr ""
+msgstr "world"
