@@ -21,12 +21,17 @@
 	}
 
 	$: consumeMsg = $t(msgInSvelte);
+
+  async function setLocale(lang) {
+    const {messages} = await import(`../locales/${lang}.ts`);
+    locale.set(lang, messages);
+  }
 </script>
 
 <h2>Current locale: {$locale}</h2>
 
-<button on:click={() => locale.set('en')}>en</button>
-<button on:click={() => locale.set('ja')}>ja</button>
+<button on:click={() => setLocale('en')}>en</button>
+<button on:click={() => setLocale('ja')}>ja</button>
 <p>
 	Count: {count}
 	<button on:click={() => count++}>increment count</button>

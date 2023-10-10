@@ -17,18 +17,19 @@ import { i18n } from '@lingui/core';
 // Idea2: export the createLocale function and let the user customize it.
 // The exported store code will just subscribe from the user's customized store.
 // Need to warn the user that any async code might cause issues with load function timing.
-import { messages as defaultMessages } from '../locales/en.ts';
 import { generateMessageId } from './generateMessageId.js';
 
-function createLocale() {
-	const defaultLocale = 'en';
+// TODO: Update this with the user's preference from config,
+// or ask the user to create this store manually from their side,
+// passing in the default locale and message if any (e.g. stored in LS).
+
+function createLocale(defaultLocale = 'en', defaultMessages = {}) {
 	const { subscribe, set } = writable(defaultLocale);
 	i18n.loadAndActivate({ locale: defaultLocale, messages: defaultMessages });
 
 	return {
 		subscribe,
-		set: async (locale) => {
-			const { messages } = await import(`../locales/${locale}.ts`);
+		set: (locale, messages) => {
 			i18n.loadAndActivate({ locale, messages });
 			set(locale);
 		}

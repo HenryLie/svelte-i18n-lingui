@@ -33,7 +33,7 @@ After the packages are installed, create a `lingui.config.ts` (or js depending o
 ```ts
 import { jstsExtractor, svelteExtractor } from 'svelte-i18n-svelte/extractor';
 
-export default config = {
+export default {
 	locales: ['en', 'ja'],
 	sourceLocale: 'en',
 	catalogs: [
