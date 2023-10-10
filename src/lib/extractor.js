@@ -26,20 +26,24 @@ const extractFromTaggedTemplate = (node, filename, onMessageExtracted) => {
 const extractFromCallExpression = (node, filename, onMessageExtracted) => {
 	const { start } = node.loc;
 	const { properties } = node.arguments[0];
-	const message = properties.find((p) => p.key.name === 'message')?.value.value;
-	if (!message) {
+	const messageProperty = properties.find((p) => p.key.name === 'message');
+	if (messageProperty === undefined) {
 		throw new Error('MessageDescriptor should contain a message property');
 	}
-	const context = properties.find((p) => p.key.name === 'context')?.value.value;
-	const comment = properties.find((p) => p.key.name === 'comment')?.value.value;
+	const message = messageProperty.value.value;
+	// Only extract if message is a string literal, otherwise skip the node as it's not a valid MessageDescriptor
+	if (message) {
+		const context = properties.find((p) => p.key.name === 'context')?.value.value;
+		const comment = properties.find((p) => p.key.name === 'comment')?.value.value;
 
-	onMessageExtracted({
-		id: generateMessageId(message, context),
-		message,
-		context,
-		comment,
-		origin: [filename, start.line, start.column]
-	});
+		onMessageExtracted({
+			id: generateMessageId(message, context),
+			message,
+			context,
+			comment,
+			origin: [filename, start.line, start.column]
+		});
+	}
 };
 
 const extractTags = (tags, node, filename, onMessageExtracted) => {
