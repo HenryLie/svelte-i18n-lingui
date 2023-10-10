@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { t } from '$lib/store';
+	import { t } from '$lib';
 
 	let shown = false;
 	onMount(() => {

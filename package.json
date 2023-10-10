@@ -23,6 +23,10 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
+		},
+		"./extractor": {
+			"types": "./dist/extractor.d.ts",
+			"svelte": "./dist/extractor.js"
 		}
 	},
 	"files": [

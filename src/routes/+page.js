@@ -1,4 +1,4 @@
-import { msg, gPlural, msgPlural } from '$lib/store.js';
+import { msg, gPlural, msgPlural } from '$lib';
 
 const msgText = msg`defineMessage text`;
 const gPluralText = (count = 2 + 3) =>

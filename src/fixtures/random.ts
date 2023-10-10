@@ -1,3 +1,3 @@
-import { gt } from './store.js';
+import { gt } from '../lib/index.js';
 
 export const getText = () => gt`test ts`;

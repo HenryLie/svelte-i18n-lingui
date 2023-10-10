@@ -1,8 +1,8 @@
 <script>
-	import { locale, t, msg, plural } from '$lib/store.js';
-	import { getText } from '$lib/random.ts';
+	import { locale, t, msg, plural } from '$lib';
+	import { getText } from '../fixtures/random.ts';
 	import T from '$lib/T.svelte';
-  import TestComponent from '$lib/TestComponent.svelte';
+	import TestComponent from '../fixtures/TestComponent.svelte';
 
 	export let data;
 
@@ -83,19 +83,23 @@
 	<T msg="Click # to learn more" ctx="ABC" cmt="Comment for translator">
 		<a href="https://svelte.dev/tutorial" target="_blank">{$t`Svelte tutorial`}</a>
 	</T>
-  <br>
+	<br />
 	<T msg="Click # to learn more" ctx="ABC" cmt="Comment for translator">
-    <TestComponent />
+		<TestComponent />
 	</T>
-  <br>
+	<br />
 	<T msg="Click # here # to # learn # more #" ctx="ABC" cmt="Comment for translator">
-    <span>0</span>
-    <span slot="1">1</span>
-    <span slot="2">2</span>
-    <span slot="3">3</span>
-    <span slot="4">4</span>
+		<span>0</span>
+		<span slot="1">1</span>
+		<span slot="2">2</span>
+		<span slot="3">3</span>
+		<span slot="4">4</span>
 	</T>
 </p>
+
+<!-- TODO: Expose from index.js -->
+<!-- TODO: Tests -->
+<!-- TODO: Publish -->
 
 <!-- Future features -->
 <p>Select</p>
