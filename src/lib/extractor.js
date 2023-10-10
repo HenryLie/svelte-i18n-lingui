@@ -174,7 +174,7 @@ export const jstsExtractor = {
 
 			walk(ast, {
 				enter(node, _parent, _prop, _index) {
-					extractTags(['g', 'msg'], node, filename, onMessageExtracted);
+					extractTags(['gt', 'msg'], node, filename, onMessageExtracted);
 					extractPlurals(['gPlural'], node, filename, onMessageExtracted);
 					extractPluralMessages(['msgPlural'], node, filename, onMessageExtracted);
 				}

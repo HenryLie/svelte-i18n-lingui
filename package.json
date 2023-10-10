@@ -38,7 +38,6 @@
 		"@lingui/cli": "^4.5.0",
 		"@lingui/conf": "^4.5.0",
 		"@lingui/core": "^4.5.0",
-		"@lingui/format-po": "^4.5.0",
 		"@playwright/test": "^1.38.1",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.25.1",

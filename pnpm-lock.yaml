@@ -25,9 +25,6 @@ devDependencies:
   '@lingui/core':
     specifier: ^4.5.0
     version: 4.5.0
-  '@lingui/format-po':
-    specifier: ^4.5.0
-    version: 4.5.0(typescript@5.2.2)
   '@playwright/test':
     specifier: ^1.38.1
     version: 1.38.1

@@ -2,7 +2,6 @@
  * @typedef {import("@lingui/conf").LinguiConfig} LinguiConfig
  */
 
-import { formatter } from '@lingui/format-po';
 import { jstsExtractor, svelteExtractor } from './src/lib/extractor.js';
 
 /**
@@ -17,7 +16,6 @@ const config = {
 			include: ['src/lib', 'src/routes']
 		}
 	],
-	format: formatter(),
 	extractors: [jstsExtractor, svelteExtractor]
 };
 
