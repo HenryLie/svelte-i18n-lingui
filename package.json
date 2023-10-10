@@ -29,6 +29,13 @@
 			"svelte": "./dist/extractor.js"
 		}
 	},
+	"typesVersions": {
+		">4.0": {
+			"extractor": [
+				"./dist/extractor.d.ts"
+			]
+		}
+	},
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
