@@ -75,7 +75,7 @@ const processPlural = (num, variations) => {
 
 /**
  * A Svelte store that subscribes to locale changes and returns a function that can be used to translate messages.
- * @param {string | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
+ * @param {string | TemplateStringsArray | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
  * @returns {string} The message translated to the currently active locale.
  *
  * Usage:
@@ -92,7 +92,7 @@ export const t = derived(locale, () => processTaggedLiteral);
 /**
  * A function that takes a message and returns a translated message based on the currently active locale.
  * Useful outside of Svelte components, as an alternative to accessing the store value with `get(t)`.
- * @param {string | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
+ * @param {string | TemplateStringsArray | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
  * @returns {string} The message translated to the currently active locale.
  *
  * Usage:
@@ -107,7 +107,7 @@ export const gt = processTaggedLiteral;
 /**
  * A function that takes a message and returns it as is, while marking the message for extraction.
  * Useful for pregaring messages to be translated at runtime based on the currently active locale.
- * @param {string | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
+ * @param {string | TemplateStringsArray | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
  * @returns {string} The message translated to the currently active locale.
  *
  * Usage:

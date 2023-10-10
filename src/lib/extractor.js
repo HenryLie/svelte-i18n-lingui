@@ -1,6 +1,4 @@
-/**
- * @typedef {import("@lingui/conf").ExtractorType} ExtractorType
- */
+/** @typedef {{ match(filename: string) => boolean, extract(filename: string, code: string, onMessageExtracted: (msg: ExtractedMessage) => void, ctx?: ExtractorCtx)=> Promise<void> | void }} ExtractorType */
 
 // import fs from 'fs';
 import { preprocess, parse, walk } from 'svelte/compiler';
