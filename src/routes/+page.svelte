@@ -87,6 +87,14 @@
 	<T msg="Click # to learn more" ctx="ABC" cmt="Comment for translator">
     <TestComponent />
 	</T>
+  <br>
+	<T msg="Click # here # to # learn # more #" ctx="ABC" cmt="Comment for translator">
+    <span>0</span>
+    <span slot="1">1</span>
+    <span slot="2">2</span>
+    <span slot="3">3</span>
+    <span slot="4">4</span>
+	</T>
 </p>
 
 <!-- Future features -->
