@@ -144,7 +144,7 @@ export const svelteExtractor = {
 				enter(node, _parent, _prop, _index) {
 					extractTags(['$t', 'msg'], node, filename, onMessageExtracted);
 					extractPlurals(['$plural'], node, filename, onMessageExtracted);
-					extractPluralMessages(['definePlural'], node, filename, onMessageExtracted);
+					extractPluralMessages(['msgPlural'], node, filename, onMessageExtracted);
 					extractComponent(node, filename, onMessageExtracted);
 				}
 			});
@@ -176,7 +176,7 @@ export const jstsExtractor = {
 				enter(node, _parent, _prop, _index) {
 					extractTags(['g', 'msg'], node, filename, onMessageExtracted);
 					extractPlurals(['gPlural'], node, filename, onMessageExtracted);
-					extractPluralMessages(['definePlural'], node, filename, onMessageExtracted);
+					extractPluralMessages(['msgPlural'], node, filename, onMessageExtracted);
 				}
 			});
 		} catch (err) {

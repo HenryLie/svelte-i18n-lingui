@@ -6,7 +6,7 @@
 
 	export let data;
 
-	const { msgText, gPluralText, definePluralText } = data;
+	const { msgText, gPluralText, msgPluralText } = data;
 
 	let count = 0;
 
@@ -59,7 +59,7 @@
 	{/key}
 </p>
 <p>
-	Define plural: {$plural(count, definePluralText)}
+	Define plural: {$plural(count, msgPluralText)}
 </p>
 <p>
 	Context:

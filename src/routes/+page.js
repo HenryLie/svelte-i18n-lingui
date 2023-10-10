@@ -1,4 +1,4 @@
-import { msg, gPlural, definePlural } from '$lib/store.js';
+import { msg, gPlural, msgPlural } from '$lib/store.js';
 
 const msgText = msg`defineMessage text`;
 const gPluralText = (count = 2 + 3) =>
@@ -8,7 +8,7 @@ const gPluralText = (count = 2 + 3) =>
 		other: '# items'
 	});
 
-const definePluralText = definePlural({
+const msgPluralText = msgPlural({
 	one: '# item',
 	other: '# items'
 });
@@ -17,6 +17,6 @@ export async function load() {
 	return {
 		msgText,
 		gPluralText,
-		definePluralText
+		msgPluralText
 	};
 }

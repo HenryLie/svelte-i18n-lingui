@@ -64,6 +64,8 @@ const processPlural = (num, variations) => {
 	return i18n.t({ id, message, values: { num } });
 };
 
+export const t = derived(locale, () => processTaggedLiteral);
+export const gt = processTaggedLiteral;
 export const msg = (descriptor, ...args) => {
 	// If MessageDescriptor is passed, return it as is as the object is a valid descriptor for t or g.
 	if ('message' in descriptor) {
@@ -73,9 +75,6 @@ export const msg = (descriptor, ...args) => {
 	return String.raw({ raw: descriptor }, ...args);
 };
 
-export const t = derived(locale, () => processTaggedLiteral);
-export const g = processTaggedLiteral;
-
 export const plural = derived(locale, () => processPlural);
 export const gPlural = processPlural;
-export const definePlural = (variations) => variations;
+export const msgPlural = (variations) => variations;
