@@ -102,10 +102,6 @@
 	</T>
 </p>
 
-<!-- TODO: Expose from index.js -->
-<!-- TODO: Tests -->
-<!-- TODO: Publish -->
-
 <!-- Future features -->
 <p>Select</p>
 <p>Datetime</p>

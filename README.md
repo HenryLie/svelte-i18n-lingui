@@ -116,7 +116,7 @@ Since the extractor parses the code statically, messages must be plain string to
 	const text = 'message';
 </script>
 
-{$t`${text}`}<!-- Will not work, extractor cannot find the message to extract -->
+{$t`${text}`}<!-- !!!Will not work, extractor cannot find the message to extract!!! -->
 ```
 
 Instead, mark the string as extractable first with the `msg` function, and pass it in to the store later on as a plain string (not as tagged template literal)

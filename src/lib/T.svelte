@@ -48,6 +48,20 @@
 	}
 </script>
 
+<!--
+@component
+A translation component used to support interpolation.
+If there is no need to interleave elements or components inside a message,
+the `t` store should be used instead for simplicity and consistency.
+
+- Usage:
+  ```svelte
+  <T msg="Click # for more information" ctx="if any" cmt="if any">
+    <a href="https://example.com">{$t`here`}`</a>
+  </T>
+  ```
+-->
+
 {strings[0] ?? ''}
 <slot />
 {strings[1] ?? ''}
