@@ -23,8 +23,10 @@ import { generateMessageId } from './generateMessageId.js';
 // or ask the user to create this store manually from their side,
 // passing in the default locale and message if any (e.g. stored in LS).
 
-function createLocale(defaultLocale = 'en', defaultMessages = {}) {
+function createLocale(defaultLocale = 'default', defaultMessages = {}) {
 	const { subscribe, set } = writable(defaultLocale);
+
+	// Necessary for plural to work; it expects a locale to be set.
 	i18n.loadAndActivate({ locale: defaultLocale, messages: defaultMessages });
 
 	return {
@@ -37,6 +39,13 @@ function createLocale(defaultLocale = 'en', defaultMessages = {}) {
 }
 export const locale = createLocale();
 
+/**
+ *
+ * @param {string | TemplateStringsArray | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
+ * @param {...string} args - additional arguments passed in to the tagged template literal, if any.
+ * @returns {string} The message translated to the currently active locale.
+ *
+ */
 const processTaggedLiteral = (descriptor, ...args) => {
 	// For parsing plain strings marked by defineMessage (msg``)"
 	if (typeof descriptor === 'string') {
@@ -67,6 +76,13 @@ const buildPluralMessages = (variations) => {
 	return `{num, plural,${pluralOptions}}`;
 };
 
+/**
+ *
+ * @param {number} num - The number value to be used for pluralization.
+ * @param {Record<string, string>} variations - a list of message variations for each plural form based on the locale.
+ * @returns {string} The message translated to the currently active locale.
+ *
+ */
 const processPlural = (num, variations) => {
 	const message = buildPluralMessages(variations);
 	const id = generateMessageId(message);
@@ -75,13 +91,11 @@ const processPlural = (num, variations) => {
 
 /**
  * A Svelte store that subscribes to locale changes and returns a function that can be used to translate messages.
- * @param {string | TemplateStringsArray | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
- * @returns {string} The message translated to the currently active locale.
  *
  * Usage:
  * ```svelte
  * <script>
- *   import { t } from 'svelte-i18n-lingui/store';
+ *   import { t } from 'svelte-i18n-lingui';
  * </script>
  *
  * {$t`Hello World`}
@@ -92,12 +106,10 @@ export const t = derived(locale, () => processTaggedLiteral);
 /**
  * A function that takes a message and returns a translated message based on the currently active locale.
  * Useful outside of Svelte components, as an alternative to accessing the store value with `get(t)`.
- * @param {string | TemplateStringsArray | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
- * @returns {string} The message translated to the currently active locale.
  *
  * Usage:
  * ```js
- * import { g } from 'svelte-i18n-lingui/store';
+ * import { g } from 'svelte-i18n-lingui';
  *
  * const hello = g`Hello World`;
  * ```
@@ -106,13 +118,15 @@ export const gt = processTaggedLiteral;
 
 /**
  * A function that takes a message and returns it as is, while marking the message for extraction.
- * Useful for pregaring messages to be translated at runtime based on the currently active locale.
- * @param {string | TemplateStringsArray | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
- * @returns {string} The message translated to the currently active locale.
+ * Useful for preparing messages to be translated at runtime based on the currently active locale.
+ *
+ * @param {TemplateStringsArray | MessageDescriptor} descriptor - A tagged template literal or a MessageDescriptor object.
+ * @param {...string} args - additional arguments passed in to the tagged template literal, if any.
+ * @returns {string} The message parsed by the tagged template literal function as a string.
  *
  * Usage:
  * ```js
- * import { msg } from 'svelte-i18n-lingui/store';
+ * import { msg } from 'svelte-i18n-lingui';
  *
  * const hello = msg`Hello World`;
  * ```
@@ -126,8 +140,37 @@ export const msg = (descriptor, ...args) => {
 	return String.raw({ raw: descriptor }, ...args);
 };
 
+/**
+ * A function that takes an object of message variations and returns it as is, while marking the collection for extraction.
+ * Useful for preparing pluralization messages to be translated at runtime based on the currently active locale.
+ * For msg definition, we don't need to supply the number value.
+ *
+ * @param {Record<string, string>} variations - a list of message variations for each plural form based on the locale.
+ * @returns {Record<string, string>} The message collcetion as is.
+ *
+ * Usage:
+ * ```js
+ * import { msgPlural } from 'svelte-i18n-lingui';
+ *
+ * const hello = msgPlural({ one: '# item', other: '# items' });
+ * ```
+ */
 export const msgPlural = (variations) => variations;
 
+/**
+ * A Svelte store that subscribes to locale changes and returns a function that can be used to translate pluralized messages.
+ *
+ * Usage:
+ * ```svelte
+ * <script>
+ *   import { plural } from 'svelte-i18n-lingui';
+ *
+ *   const count = 2 + 3;
+ * </script>
+ *
+ * {$plural(count, { one: '# item', other: '# items' })
+ * ```
+ */
 export const plural = derived(locale, () => processPlural);
 export const gPlural = processPlural;
 

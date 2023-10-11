@@ -22,10 +22,10 @@
 
 	$: consumeMsg = $t(msgInSvelte);
 
-  async function setLocale(lang) {
-    const {messages} = await import(`../locales/${lang}.ts`);
-    locale.set(lang, messages);
-  }
+	async function setLocale(lang) {
+		const { messages } = await import(`../locales/${lang}.ts`);
+		locale.set(lang, messages);
+	}
 </script>
 
 <h2>Current locale: {$locale}</h2>

@@ -26,7 +26,7 @@
 		},
 		"./extractor": {
 			"types": "./dist/extractor.d.ts",
-			"svelte": "./dist/extractor.js"
+			"default": "./dist/extractor.js"
 		}
 	},
 	"typesVersions": {

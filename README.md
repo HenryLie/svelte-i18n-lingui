@@ -54,11 +54,11 @@ To extract messages as catalogs and compile them for production, `@lingui/cli` p
 
 ```json
 {
-  scripts: {
-    ...,
-    "extract": "lingui extract",
-    "compile": "lingui compile --typescript"
-  }
+	"scripts": {
+		// Add these commands
+		"extract": "lingui extract",
+		"compile": "lingui compile --typescript"
+	}
 }
 ```
 
@@ -66,28 +66,24 @@ These can be added to pre-commit hooks to make sure that new text are properly e
 
 ## Usage
 
-```
-NOTE: Currently the library is set up with a fixed configuration:
-
-- `en` language is the base language and activated automatically during startup
-- This default catalog is loaded from `src/locales/en.ts`
-
-These will be made flexible in future updates.
-```
-
-Importing the store for the first time will initiate Lingui's i18n instance with the default language and load its catalog for immediate usage.
+Importing the store for the first time will initiate Lingui's i18n instance with a default language and an empty message catalog.
 
 ### Change Active Locale
 
-Locale can be changed by accessing the `set` method of the `locale` store:
+Locale can be changed by accessing the `set` method of the `locale` store, passing in the desired locale and message catalog. To make sure that only the necessary message catalog is downloaded, use dynamic import, e.g.:
 
 ```svelte
 <script lang="ts">
 	import { locale } from 'svelte-i18n-lingui';
+
+	async function setLocale(lang) {
+		const { messages } = await import(`../locales/${lang}.ts`);
+		locale.set(lang, messages);
+	}
 </script>
 
-<button on:click={() => locale.set('en')}>Switch to English</button>
-<button on:click={() => locale.set('ja')}>Switch to Japanese</button>
+<button on:click={() => setLocale('en')}>Switch to English</button>
+<button on:click={() => setLocale('ja')}>Switch to Japanese</button>
 ```
 
 ### Basic Translations
