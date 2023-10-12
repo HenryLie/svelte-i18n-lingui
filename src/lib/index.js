@@ -53,7 +53,7 @@ const processTaggedLiteral = (descriptor, ...args) => {
 		return i18n.t({ id, message: descriptor });
 	}
 
-	if ('message' in descriptor) {
+	if (typeof descriptor === 'object' && 'message' in descriptor) {
 		const id = generateMessageId(descriptor.message, descriptor.context);
 		return i18n.t({ id, ...descriptor });
 	}
@@ -133,7 +133,7 @@ export const gt = processTaggedLiteral;
  */
 export const msg = (descriptor, ...args) => {
 	// If MessageDescriptor is passed, return it as is as the object is a valid descriptor for t or g.
-	if ('message' in descriptor) {
+	if (typeof descriptor === 'object' && 'message' in descriptor) {
 		return descriptor;
 	}
 	// Otherwise, return the processed template literal as a string.
