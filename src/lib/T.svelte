@@ -1,5 +1,5 @@
 <script>
-	import { t } from '$lib';
+	import { t } from '.';
 	/**
 	 * @type {string}
 	 */
