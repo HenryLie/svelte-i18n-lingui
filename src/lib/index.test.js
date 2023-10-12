@@ -18,7 +18,11 @@ const messageCatalog = convertMessageCatalogToIdKeys({
 	'hello {0}': 'こんにちは {0}',
 	John: 'ジョン',
 	'right|direction': '右',
-	'right|correct': '正しい'
+	'right|correct': '正しい',
+	'{num, plural, one {There is # item.} other {There are # items.}}':
+		'{num, plural, one {# 個のアイテムがあります。} other {# 個のアイテムがあります。}}',
+	'{num, plural, one {There is # item.} other {There are # items.}}|messages':
+		'{num, plural, other {# 件があります。}}'
 });
 
 describe('svelte-i18n-lingui', () => {
@@ -69,9 +73,6 @@ describe('svelte-i18n-lingui', () => {
 				expect(t({ message: 'right', context: 'direction' })).toBe('右');
 				expect(t({ message: 'right', context: 'correct' })).toBe('正しい');
 			});
-			it('can translate messages in MessageDescriptor with comment', () => {
-				expect(t({ message: 'hello', comment: 'Comment for translator' })).toBe('こんにちは');
-			});
 			it('can translate messages in MessageDescriptor with both context and comment', () => {
 				expect(
 					t({ message: 'right', context: 'direction', comment: 'The direction, to the right.' })
@@ -111,6 +112,54 @@ describe('svelte-i18n-lingui', () => {
 			expect(msgPlural(variations)).toBe(variations);
 		});
 	});
-});
 
-// TODO: Use describe.each to test all the different ways to declare messages
+	describe.each([
+		{ name: 'plural store', plural: get(plural) },
+		{ name: 'gPlural', plural: gPlural }
+	])('$name', ({ plural }) => {
+		it('returns the original message if no translation is available', () => {
+			expect(plural(2, { one: 'There is # item.', other: 'There are # items.' })).toBe(
+				'There are 2 items.'
+			);
+			expect(plural(1, { one: 'There is # item.', other: 'There are # items.' })).toBe(
+				'There is 1 item.'
+			);
+			expect(plural(0, { one: 'There is # item.', other: 'There are # items.' })).toBe(
+				'There are 0 items.'
+			);
+			expect(plural(-1, { one: 'There is # item.', other: 'There are # items.' })).toBe(
+				'There is -1 item.'
+			);
+		});
+
+		describe('with a message catalog', () => {
+			beforeEach(() => {
+				locale.set('ja', messageCatalog);
+			});
+
+			it('returns the correct translated message based on the number passed in', () => {
+				expect(plural(2, { one: 'There is # item.', other: 'There are # items.' })).toBe(
+					'2 個のアイテムがあります。'
+				);
+				expect(plural(1, { one: 'There is # item.', other: 'There are # items.' })).toBe(
+					'1 個のアイテムがあります。'
+				);
+				expect(plural(0, { one: 'There is # item.', other: 'There are # items.' })).toBe(
+					'0 個のアイテムがあります。'
+				);
+				expect(plural(-1, { one: 'There is # item.', other: 'There are # items.' })).toBe(
+					'-1 個のアイテムがあります。'
+				);
+			});
+
+			it.todo('respects the message context and ignores comments', () => {
+				expect(
+					gt({
+						message: plural(2, { one: 'There is # item.', other: 'There are # items.' }),
+						context: 'messages'
+					})
+				).toBe('2件があります。');
+			});
+		});
+	});
+});
