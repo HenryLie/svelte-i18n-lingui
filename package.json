@@ -4,6 +4,7 @@
 	"author": "Henry Roes Lie",
 	"license": "MIT",
 	"scripts": {
+		"postinstall": "svelte-kit sync",
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
 		"preview": "vite preview",
