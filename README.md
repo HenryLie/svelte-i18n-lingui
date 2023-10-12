@@ -184,3 +184,7 @@ Since Svelte's stores are meant to be used in Svelte components, using them insi
 
 - `$t` => `gt`
 - `$plural` => `gPlural`
+
+## Contributing
+
+Found a bug? Feel free to open an issue or PR to fix it!
