@@ -1,8 +1,18 @@
 {
 	"name": "svelte-i18n-lingui",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"author": "Henry Roes Lie",
 	"license": "MIT",
+	"keywords": [
+		"svelte",
+		"i18n",
+		"l10n",
+		"lingui",
+		"multilingual",
+		"translation",
+		"internationalization",
+		"localization"
+	],
 	"scripts": {
 		"postinstall": "svelte-kit sync",
 		"dev": "vite dev",
