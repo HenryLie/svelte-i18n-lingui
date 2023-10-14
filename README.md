@@ -59,7 +59,7 @@ npm install --save-dev @lingui/cli
 After the packages are installed, create a `lingui.config.ts` (or js depending on your project config) and add a basic configuration. An example of a simple project with English base language and Japanese localization:
 
 ```ts
-import { jstsExtractor, svelteExtractor } from 'svelte-i18n-svelte/extractor';
+import { jstsExtractor, svelteExtractor } from 'svelte-i18n-lingui/extractor';
 
 export default {
 	locales: ['en', 'ja'],
