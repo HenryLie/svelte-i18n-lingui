@@ -1,10 +1,13 @@
 {
 	"name": "svelte-i18n-lingui",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"author": "Henry Roes Lie",
 	"license": "MIT",
+	"description": "Add i18n to Svelte/Sveltekit projects using Lingui, using message as the catalog id",
+	"repository": "github:HenryLie/svelte-i18n-lingui",
 	"keywords": [
 		"svelte",
+		"sveltekit",
 		"i18n",
 		"l10n",
 		"lingui",

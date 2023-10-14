@@ -1,6 +1,6 @@
 # svelte-i18n-lingui
 
-Use [Lingui](https://lingui.dev/) for adding i18n in Svelte/Sveltekit projects, with gettext-style message as catalog id.
+Add i18n to Svelte/Sveltekit projects using [Lingui](https://lingui.dev/), with gettext-style message as catalog id.
 
 ## Features
 
