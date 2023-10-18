@@ -3,7 +3,7 @@
 // import fs from 'fs';
 import { preprocess, parse, walk } from 'svelte/compiler';
 import sveltePreprocess from 'svelte-preprocess';
-import { Parser as Acorn } from 'acorn';
+import { parse as tsParse } from '@typescript-eslint/typescript-estree';
 import { generateMessageId } from './generateMessageId.js';
 
 const extractFromTaggedTemplate = (node, filename, onMessageExtracted) => {
@@ -147,7 +147,7 @@ export const svelteExtractor = {
 				}
 			});
 		} catch (err) {
-			console.error(err);
+			console.log(`Error at ${filename}:`, err);
 		}
 	}
 };
@@ -161,11 +161,9 @@ export const jstsExtractor = {
 	},
 	async extract(filename, source, onMessageExtracted, _ctx) {
 		try {
-			const ast = Acorn.parse(source, {
-				filename,
-				sourceType: 'module',
-				ecmaVersion: 2020,
-				locations: true
+			const ast = tsParse(source, {
+				filePath: filename,
+				loc: true
 			});
 
 			// fs.writeFileSync('ast.json', JSON.stringify(ast, null, 2));
@@ -178,7 +176,7 @@ export const jstsExtractor = {
 				}
 			});
 		} catch (err) {
-			console.error(err);
+			console.log(`Error at ${filename}:`, err);
 		}
 	}
 };

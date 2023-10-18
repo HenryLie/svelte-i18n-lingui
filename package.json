@@ -85,7 +85,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"acorn": "^8.10.0",
+		"@typescript-eslint/typescript-estree": "^6.8.0",
 		"js-sha256": "^0.10.1",
 		"svelte-preprocess": "^5.0.4"
 	}
