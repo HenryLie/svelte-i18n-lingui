@@ -42,7 +42,7 @@ export const locale = createLocale();
 /**
  *
  * @param {string | TemplateStringsArray | MessageDescriptor} descriptor - A tagged template literal, plain string, or a MessageDescriptor object.
- * @param {...string} args - additional arguments passed in to the tagged template literal, if any.
+ * @param {...string | number} args - additional arguments passed in to the tagged template literal, if any.
  * @returns {string} The message translated to the currently active locale.
  *
  */
