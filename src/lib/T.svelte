@@ -16,7 +16,7 @@
 	let strings;
 
 	$: {
-		strings = $t({
+		strings = t({
 			message: msg,
 			context: ctx,
 			comment: cmt

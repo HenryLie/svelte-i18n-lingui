@@ -15,7 +15,7 @@
 
 {#if shown}
 	<span transition:fade={{ duration: 1001 }}>
-		{$t`hello`}
+		{t`hello`}
 	</span>
 {/if}
 

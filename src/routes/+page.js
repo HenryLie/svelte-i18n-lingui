@@ -1,8 +1,8 @@
-import { msg, gPlural, msgPlural } from '$lib';
+import { msg, plural, msgPlural } from '$lib';
 
 const msgText = msg`defineMessage text`;
 const gPluralText = (count = 2 + 3) =>
-	gPlural(count, {
+	plural(count, {
 		'=5': 'five items',
 		one: '# item',
 		other: '# items'

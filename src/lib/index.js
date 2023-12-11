@@ -101,7 +101,7 @@ const processPlural = (num, variations) => {
  * {$t`Hello World`}
  * ```
  */
-export const t = derived(locale, () => processTaggedLiteral);
+// export const t = derived(locale, () => processTaggedLiteral);
 
 /**
  * A function that takes a message and returns a translated message based on the currently active locale.
@@ -114,7 +114,7 @@ export const t = derived(locale, () => processTaggedLiteral);
  * const hello = g`Hello World`;
  * ```
  */
-export const gt = processTaggedLiteral;
+export const t = processTaggedLiteral;
 
 /**
  * A function that takes a message and returns it as is, while marking the message for extraction.
@@ -171,7 +171,7 @@ export const msgPlural = (variations) => variations;
  * {$plural(count, { one: '# item', other: '# items' })
  * ```
  */
-export const plural = derived(locale, () => processPlural);
-export const gPlural = processPlural;
+// export const plural = derived(locale, () => processPlural);
+export const plural = processPlural;
 
 export { default as T } from './T.svelte';
