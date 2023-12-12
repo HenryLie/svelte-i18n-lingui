@@ -140,8 +140,8 @@ export const svelteExtractor = {
 
 			walk(ast, {
 				enter(node, _parent, _prop, _index) {
-					extractTags(['$t', 'msg'], node, filename, onMessageExtracted);
-					extractPlurals(['$plural'], node, filename, onMessageExtracted);
+					extractTags(['t', 'msg'], node, filename, onMessageExtracted);
+					extractPlurals(['plural'], node, filename, onMessageExtracted);
 					extractPluralMessages(['msgPlural'], node, filename, onMessageExtracted);
 					extractComponent(node, filename, onMessageExtracted);
 				}
@@ -170,8 +170,8 @@ export const jstsExtractor = {
 
 			walk(ast, {
 				enter(node, _parent, _prop, _index) {
-					extractTags(['gt', 'msg'], node, filename, onMessageExtracted);
-					extractPlurals(['gPlural'], node, filename, onMessageExtracted);
+					extractTags(['t', 'msg'], node, filename, onMessageExtracted);
+					extractPlurals(['plural'], node, filename, onMessageExtracted);
 					extractPluralMessages(['msgPlural'], node, filename, onMessageExtracted);
 				}
 			});
