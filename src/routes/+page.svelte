@@ -3,6 +3,7 @@
 	import { getText } from '../fixtures/random.ts';
 	import T from '$lib/T.svelte';
 	import TestComponent from '../fixtures/TestComponent.svelte';
+	import { setLocale } from '../helpers/util';
 
 	export let data;
 
@@ -24,14 +25,9 @@
   // NOTE: No longer working.
   // This is no longer tracked by the $locale key since it isn't a store anymore
 	$: consumeMsg = t(msgInSvelte);
-
-	async function setLocale(lang) {
-		const { messages } = await import(`../locales/${lang}.ts`);
-		locale.set(lang, messages);
-	}
 </script>
 
-{#key $locale}
+	<a href="/">HOME</a>
 	<a href="/nested">Nested</a>
 	<a href="/nested2">Nested2</a>
 
@@ -125,4 +121,3 @@
 		<!-- 	}) -->
 		<!-- })} -->
 	</p>
-{/key}
