@@ -21,15 +21,27 @@ msgstr "{num, plural, =5 {five items} one {# item} other {# items}}"
 msgid "{num, plural, one {# item} other {# items}}"
 msgstr "{num, plural, one {# item} other {# items}}"
 
-#: src/routes/+page.svelte:55
+#: src/lib/index.test.js:99
+#: src/lib/index.test.js:102
+#: src/lib/index.test.js:105
+#: src/lib/index.test.js:108
+#: src/lib/index.test.js:119
+#: src/lib/index.test.js:122
+#: src/lib/index.test.js:125
+#: src/lib/index.test.js:128
+#: src/lib/index.test.js:136
+msgid "{num, plural, one {There is # item.} other {There are # items.}}"
+msgstr "{num, plural, one {There is # item.} other {There are # items.}}"
+
+#: src/routes/+page.svelte:61
 msgid "{num, plural, one {There is # message.} other {There are # messages.}}"
 msgstr "{num, plural, one {There is # message.} other {There are # messages.}}"
 
 #. Comment for translator
 #: src/routes/+page.svelte:
 msgctxt "ABC"
-msgid "Click # here # to # learn # more #"
-msgstr "Click # here # to # learn # more #"
+msgid "Click .##. to .#. learn .#. more .#."
+msgstr "Click .##. to .#. learn .#. more .#."
 
 #. Comment for translator
 #. Comment for translator
@@ -40,7 +52,7 @@ msgid "Click # to learn more"
 msgstr "Click # to learn more"
 
 #. This is a comment for the translator
-#: src/routes/+page.svelte:84
+#: src/routes/+page.svelte:90
 msgid "Commented message"
 msgstr "Commented message"
 
@@ -49,21 +61,33 @@ msgid "defineMessage text"
 msgstr "defineMessage text"
 
 #: src/fixtures/TestComponent.svelte:18
-#: src/routes/+page.svelte:41
+#: src/lib/index.test.js:26
+#: src/lib/index.test.js:34
+#: src/lib/index.test.js:48
+#: src/routes/+page.svelte:47
 msgid "hello"
 msgstr "hello"
 
-#: src/routes/+page.svelte:42
-#: src/routes/+page.svelte:50
+#: src/lib/index.test.js:38
+#: src/lib/index.test.js:41
+msgid "hello {0}"
+msgstr "hello {0}"
+
+#: src/routes/+page.svelte:48
+#: src/routes/+page.svelte:56
 msgid "Hello, {0}!"
 msgstr "Hello, {0}!"
 
-#: src/routes/+page.svelte:72
+#: src/lib/index.test.js:41
+msgid "John"
+msgstr "John"
+
+#: src/routes/+page.svelte:78
 msgctxt "A"
 msgid "Message with context"
 msgstr "Message with context"
 
-#: src/routes/+page.svelte:78
+#: src/routes/+page.svelte:84
 msgctxt "B"
 msgid "Message with context"
 msgstr "Message with context"
@@ -72,7 +96,21 @@ msgstr "Message with context"
 msgid "msgSvelte"
 msgstr "msgSvelte"
 
-#: src/routes/+page.svelte:89
+#. The direction, to the right.
+#: src/lib/index.test.js:51
+#: src/lib/index.test.js:56
+msgctxt "direction"
+msgid "right"
+msgstr "right"
+
+#. The word for correctness e.g. that's right
+#: src/lib/index.test.js:52
+#: src/lib/index.test.js:59
+msgctxt "correct"
+msgid "right"
+msgstr "right"
+
+#: src/routes/+page.svelte:95
 msgid "Svelte tutorial"
 msgstr "Svelte tutorial"
 
@@ -80,6 +118,6 @@ msgstr "Svelte tutorial"
 msgid "test ts"
 msgstr "test ts"
 
-#: src/routes/+page.svelte:42
+#: src/routes/+page.svelte:48
 msgid "world"
 msgstr "world"

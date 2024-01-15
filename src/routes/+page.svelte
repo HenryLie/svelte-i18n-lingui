@@ -21,9 +21,8 @@
 		local = getText();
 	}
 
-
-  // NOTE: No longer working.
-  // This is no longer tracked by the $locale key since it isn't a store anymore
+	// NOTE: No longer working.
+	// This is no longer tracked by the $locale key since it isn't a store anymore
 	$: consumeMsg = t(msgInSvelte);
 </script>
 
@@ -96,7 +95,7 @@
 			<TestComponent />
 		</T>
 		<br />
-		<T msg="Click # here # to # learn # more #" ctx="ABC" cmt="Comment for translator">
+		<T msg="Click .##. to .#. learn .#. more .#." ctx="ABC" cmt="Comment for translator">
 			<span>0</span>
 			<span slot="1">1</span>
 			<span slot="2">2</span>
