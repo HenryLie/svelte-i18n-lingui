@@ -100,6 +100,9 @@
 		<span slot="3">3</span>
 		<span slot="4">4</span>
 	</T>
+	<br />
+	Whitespace test:
+	<T msg="Click # to learn more">here</T><T msg="Click # to learn more">here</T>
 </p>
 
 <!-- Future features -->

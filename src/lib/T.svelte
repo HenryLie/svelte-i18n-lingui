@@ -62,14 +62,7 @@ the `t` store should be used instead for simplicity and consistency.
   ```
 -->
 
-{strings[0] ?? ''}
-<slot />
-{strings[1] ?? ''}
-<slot name="1" />
-{strings[2] ?? ''}
-<slot name="2" />
-{strings[3] ?? ''}
-<slot name="3" />
-{strings[4] ?? ''}
-<slot name="4" />
-{strings[5] ?? ''}
+<!-- Put in the same line to prevent automatic whtiespace insertion -->
+{strings[0] ?? ''}<slot />{strings[1] ?? ''}<slot name="1" />{strings[2] ?? ''}<slot
+	name="2"
+/>{strings[3] ?? ''}<slot name="3" />{strings[4] ?? ''}<slot name="4" />{strings[5] ?? ''}
