@@ -55,7 +55,7 @@
 	],
 	"peerDependencies": {
 		"@lingui/core": "^4.5.0",
-		"svelte": "4.x"
+		"svelte": ">=4"
 	},
 	"devDependencies": {
 		"@lingui/cli": "^4.5.0",
