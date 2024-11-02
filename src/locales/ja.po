@@ -37,6 +37,11 @@ msgstr "#を#クリックして#詳細#知る#"
 #: src/routes/+page.svelte:
 msgctxt "ABC"
 msgid "Click # to learn more"
+msgstr "ABC:#をクリックして詳細知る"
+
+#: src/routes/+page.svelte:
+#: src/routes/+page.svelte:
+msgid "Click # to learn more"
 msgstr "#をクリックして詳細知る"
 
 #. This is a comment for the translator
@@ -50,6 +55,8 @@ msgstr "メッセージ定義 テキスト"
 
 #: src/fixtures/TestComponent.svelte:18
 #: src/routes/+page.svelte:41
+#: src/routes/+page.svelte:109
+#: src/routes/+page.svelte:109
 msgid "hello"
 msgstr "こんにちは"
 

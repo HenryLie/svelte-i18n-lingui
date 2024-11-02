@@ -106,7 +106,7 @@
 	</T>
 	<br />
 	Whitespace test:
-	<T msg="Click # to learn more">here</T><T msg="Click # to learn more">here</T>
+	<T msg="Click # to learn more">{$t`hello`}</T><T msg="Click # to learn more">{$t`hello`}</T>
 </p>
 
 <!-- Future features -->

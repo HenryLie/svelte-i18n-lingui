@@ -3,7 +3,6 @@
 // import fs from 'fs';
 import { preprocess, parse } from 'svelte/compiler';
 import { walk } from '../../node_modules/estree-walker/src/index.js';
-import sveltePreprocess from 'svelte-preprocess';
 import { parse as tsParse } from '@typescript-eslint/typescript-estree';
 import { generateMessageId } from './generateMessageId.js';
 
@@ -103,7 +102,7 @@ const extractPluralMessages = (tags, node, filename, onMessageExtracted) => {
 };
 
 const extractComponent = (node, filename, onMessageExtracted) => {
-	if (node.type === 'InlineComponent' && node.name === 'T') {
+	if (node.type === 'Component' && node.name === 'T') {
 		const { start } = node; // FIXME: Find out why Loc is not printed here, causing this to be incorrect
 		const { attributes } = node;
 		const message = attributes.find((a) => a.name === 'msg')?.value[0].data;
@@ -129,15 +128,7 @@ export const svelteExtractor = {
 	},
 	async extract(filename, source, onMessageExtracted, _ctx) {
 		try {
-			const { code: processedCode, map: _processedMap } = await preprocess(
-				source,
-				[sveltePreprocess()],
-				{ filename }
-			);
-
-			const ast = parse(processedCode, { filename });
-
-			// fs.writeFileSync('ast.json', JSON.stringify(ast, null, 2));
+			const ast = parse(source, { filename, modern: true });
 
 			walk(ast, {
 				enter(node, _parent, _prop, _index) {

@@ -74,7 +74,7 @@ export default {
 };
 ```
 
-Here we are using `svelte-i18n-svelte`'s extractors to allow for extracting messages with customized tags from both svelte components and plain js/ts files.
+Here we are using `svelte-i18n-lingui`'s extractors to allow for extracting messages with customized tags from both svelte components and plain js/ts files.
 
 ### NPM Commands
 
@@ -133,9 +133,9 @@ To start translating in Svelte files, import the `t` store and auto-subscribe to
 {$t`Proceed to ${$t`cart`}`}
 ```
 
-### Predefine Message
+### Predefined Message
 
-Since the extractor does a static parse of the code, messages must be plain string to be extractable. Template literals or variables names won't work.
+Since the extractor does a static parse of the code, messages must be in plain string to be extractable. Template literals or variables names won't work.
 
 ```svelte
 <script lang="ts">
@@ -144,7 +144,7 @@ Since the extractor does a static parse of the code, messages must be plain stri
 	const text = 'message';
 </script>
 
-{$t`${text}`}<!-- !!!Will not work, extractor cannot find the message to extract!!! -->
+{$t`${text}`}<!-- !!! Will not work, extractor cannot find the message to extract !!! -->
 ```
 
 Instead, mark the string as extractable first with the provided `msg` function, and pass it to the store later on as a plain string (not as tagged template literal)
