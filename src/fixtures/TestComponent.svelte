@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { t } from '$lib';
 
-	let shown = false;
+	let shown = $state(false);
 	onMount(() => {
 		const timeout = setInterval(() => {
 			shown = !shown;

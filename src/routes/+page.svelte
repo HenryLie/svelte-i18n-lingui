@@ -4,23 +4,23 @@
 	import T from '$lib/T.svelte';
 	import TestComponent from '../fixtures/TestComponent.svelte';
 
-	export let data;
+	let { data } = $props();
 
 	const { msgText, gPluralText, msgPluralText } = data;
 
-	let count = 0;
+	let count = $state(0);
 
-	let local;
+	let local = $state();
 
 	const msgInSvelte = msg`msgSvelte`;
 
-	$: {
+	$effect(() => {
 		$locale;
 		count;
 		local = getText();
-	}
+	});
 
-	$: consumeMsg = $t(msgInSvelte);
+	let consumeMsg = $derived($t(msgInSvelte));
 
 	async function setLocale(lang) {
 		const { messages } = await import(`../locales/${lang}.ts`);
@@ -30,12 +30,12 @@
 
 <h2>Current locale: {$locale}</h2>
 
-<button on:click={() => setLocale('en')}>en</button>
-<button on:click={() => setLocale('ja')}>ja</button>
+<button onclick={() => setLocale('en')}>en</button>
+<button onclick={() => setLocale('ja')}>ja</button>
 <p>
 	Count: {count}
-	<button on:click={() => count++}>increment count</button>
-	<button on:click={() => count--}>decrement count</button>
+	<button onclick={() => count++}>increment count</button>
+	<button onclick={() => count--}>decrement count</button>
 </p>
 
 <p>Translated text: {$t`hello`}</p>
@@ -95,9 +95,13 @@
 	<br />
 	<T msg="Click # here # to # learn # more #" ctx="ABC" cmt="Comment for translator">
 		<span>0</span>
+		<!-- @migration-task: migrate this slot by hand, `1` is an invalid identifier -->
 		<span slot="1">1</span>
+		<!-- @migration-task: migrate this slot by hand, `2` is an invalid identifier -->
 		<span slot="2">2</span>
+		<!-- @migration-task: migrate this slot by hand, `3` is an invalid identifier -->
 		<span slot="3">3</span>
+		<!-- @migration-task: migrate this slot by hand, `4` is an invalid identifier -->
 		<span slot="4">4</span>
 	</T>
 	<br />
