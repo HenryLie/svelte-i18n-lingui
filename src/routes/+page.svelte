@@ -2,6 +2,7 @@
 	import { locale, t, msg, plural } from '$lib';
 	import { getText } from '../fixtures/random.ts';
 	import T from '$lib/T.svelte';
+	import LegacyT from '$lib/LegacyT.svelte';
 	import TestComponent from '../fixtures/TestComponent.svelte';
 
 	let { data } = $props();
@@ -84,7 +85,7 @@
 	Comment: {$t({ message: 'Commented message', comment: 'This is a comment for the translator' })}
 </p>
 <p>
-	Interpolation inside component:
+	Interpolation inside component:<br />
 	<T msg="Click # to learn more" ctx="ABC" cmt="Comment for translator">
 		<a href="https://svelte.dev/tutorial" target="_blank">{$t`Svelte tutorial`}</a>
 	</T>
@@ -94,16 +95,21 @@
 	</T>
 	<br />
 	<T msg="Click # here # to # learn # more #" ctx="ABC" cmt="Comment for translator">
-		<span>0</span>
-		<!-- @migration-task: migrate this slot by hand, `1` is an invalid identifier -->
-		<span slot="1">1</span>
-		<!-- @migration-task: migrate this slot by hand, `2` is an invalid identifier -->
-		<span slot="2">2</span>
-		<!-- @migration-task: migrate this slot by hand, `3` is an invalid identifier -->
-		<span slot="3">3</span>
-		<!-- @migration-task: migrate this slot by hand, `4` is an invalid identifier -->
-		<span slot="4">4</span>
+		<span>1</span>
+		{#snippet second()}2{/snippet}
+		{#snippet third()}3{/snippet}
+		{#snippet fourth()}4{/snippet}
+		{#snippet fifth()}5{/snippet}
 	</T>
+	<br />
+	Legacy T:
+	<LegacyT msg="Click # here # to # learn # more #" ctx="ABC" cmt="Comment for translator">
+		<span>0</span>
+		<span slot="1">1</span>
+		<span slot="2">2</span>
+		<span slot="3">3</span>
+		<span slot="4">4</span>
+	</LegacyT>
 	<br />
 	Whitespace test:
 	<T msg="Click # to learn more">{$t`hello`}</T><T msg="Click # to learn more">{$t`hello`}</T>
