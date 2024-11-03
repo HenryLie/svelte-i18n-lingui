@@ -10,7 +10,10 @@ Add i18n to Svelte/Sveltekit projects using [Lingui](https://lingui.dev/), with 
 - **Simple api with stores** - utilizes svelte stores to subscribe to locale changes and translate text in real time.
 - **Clean syntax** - use tagged template literals for simple translations, e.g. `` $t`Hello world` ``
 
-## Motivations
+## Why this library?
+
+<details>
+<summary>Motivations</summary>
 
 I created this package since I couldn't find any svelte i18n library that allows me to add i18n with a gettext-style approach, which works by:
 
@@ -37,6 +40,8 @@ While looking for i18n libraries that support this requirement, I found [Lingui]
 - The i18n function provided is not reactive since it's just a plain js function.
 
 Due to the above challenges, I decided to build this library to replicate Lingui's macro functionality on Svelte projects. The basic syntax looks similar to Lingui's macro version, but there are some changes added on top to make it reactive on Svelte. This library also comes with an extractor for both Svelte files and js/ts files to support its customized syntax.
+
+</details>
 
 ## How it works
 
@@ -133,7 +138,7 @@ To start translating in Svelte files, import the `t` store and auto-subscribe to
 {$t`Proceed to ${$t`cart`}`}
 ```
 
-### Predefined Message
+### Predefined Messages
 
 Since the extractor does a static parse of the code, messages must be in plain string to be extractable. Template literals or variables names won't work.
 
@@ -161,15 +166,16 @@ Instead, mark the string as extractable first with the provided `msg` function, 
 
 ### Interpolate Elements/Components
 
-To include components or elements in the middle of the message, use the provided `<T>` component and use `#` characters to add slots in the middle of the text to insert elements or components:
+To include components or elements in the middle of the message, use the provided `<T>` component and use `#` characters to add slots in the middle of the text to insert elements or components. The first parameter is supplied through the default children snippet (as the content of the component), while subsequent parameters use snippets (`second`, `third`, `fourth`, `fifth` corresponding to the index of the parameter, starting from 1 for the default children snippet).
 
 ```svelte
 <script lang="ts">
-	import { T } from 'svelte-i18n-lingui/component';
+	import { T } from 'svelte-i18n-lingui';
 </script>
 
-<T msg="Click # for more information">
+<T msg="Click # for #">
 	<a href="/about">{$t`here`}</a>
+	{#snippet second()}{$t`more information`}{/snippet}
 </T>
 ```
 
@@ -214,6 +220,25 @@ Since Svelte's stores are meant to be used in Svelte components, using them insi
 
 - `$t` => `gt`
 - `$plural` => `gPlural`
+
+## Migration guide
+
+<details>
+<summary>v0.1.x to v0.2.x</summary>
+
+- Update Node version to at least v20
+- If the project is still on Svelte 4:
+  - You'll need to change all usages of the `<T>` component to use the new `<LegacyT>` component instead. Otherwise the syntax stays exactly the same with slots.
+- If the project is on Svelte 5:
+  - If you're not ready to use runes mode yet, you can keep using the slots syntax by modifying the usages of `<T>` components to use the `<LegacyT>` component instead. Other than the component name and import changes, the syntax stays the same.
+  - If you're migrating to runes mode, use the new `<T>` component and switch to using snippets instead of slots if you have more than one parameter in the sentence. If there is only one parameter, then there is no need to change anything since default slot and children snippet has the same syntax.
+
+</details>
+
+## Known issues
+
+- When extracting to Lingui's PO format and enabling the `origins` option, the line numbers are always empty for `<T>` components usage. The line numbers work on any other syntax.
+	- When working in a larger project in a team, I suggest disabling origins on the PO file anyway, since they cause a lot of line changes in diff view every time a string is added/reused. This might cause merge conflicts when two people are modifying or reusing the same string, for example.
 
 ## Contributing
 

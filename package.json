@@ -14,7 +14,8 @@
 		"multilingual",
 		"translation",
 		"internationalization",
-		"localization"
+		"localization",
+		"gettext"
 	],
 	"scripts": {
 		"prepare": "svelte-kit sync",
