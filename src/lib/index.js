@@ -175,3 +175,4 @@ export const plural = derived(locale, () => processPlural);
 export const gPlural = processPlural;
 
 export { default as T } from './T.svelte';
+export { default as LegacyT } from './LegacyT.svelte';
