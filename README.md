@@ -235,6 +235,14 @@ Since Svelte's stores are meant to be used in Svelte components, using them insi
 
 </details>
 
+<details>
+<summary>v0.2.x to v0.3.x</summary>
+
+- Svelte 4 is no longer supported, upgrade to Svelte 5.
+- The `<LegacyT>` component is removed, use the `<T>` component with snippets instead.
+</details>
+
+
 ## Known issues
 
 - When extracting to Lingui's PO format and enabling the `origins` option, the line numbers are always empty for `<T>` components usage. The line numbers work on any other syntax.

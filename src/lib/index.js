@@ -6,7 +6,7 @@
  * @property {string} [comment] - A comment purely for giving information to the translator, won't affect translated string.
  */
 
-import { writable, derived } from 'svelte/store';
+import { writable } from 'svelte/store';
 import { i18n } from '@lingui/core';
 // TODO: How to customize this based on user's default language preference,
 // and load them synchronously?
