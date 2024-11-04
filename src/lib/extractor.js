@@ -2,7 +2,7 @@
 
 // import fs from 'fs';
 import { preprocess, parse } from 'svelte/compiler';
-import { walk } from '../../node_modules/estree-walker/src/index.js';
+import { walk } from 'estree-walker-ts';
 import { parse as tsParse } from '@typescript-eslint/typescript-estree';
 import { generateMessageId } from './generateMessageId.js';
 

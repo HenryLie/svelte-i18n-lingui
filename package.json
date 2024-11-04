@@ -87,7 +87,7 @@
 	"type": "module",
 	"dependencies": {
 		"@typescript-eslint/typescript-estree": "^8.12.2",
-		"estree-walker": "^3.0.3",
+		"estree-walker-ts": "^1.0.1",
 		"js-sha256": "^0.10.1"
 	}
 }
