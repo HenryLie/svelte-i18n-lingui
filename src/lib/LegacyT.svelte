@@ -1,22 +1,28 @@
 <script>
 	import { t } from '.';
-
+	import { run } from 'svelte/legacy';
 	/**
-	 * @typedef {import('svelte').Snippet} Snippet
+	 * @type {string}
 	 */
+	export let msg;
+	/**
+	 * @type {string}
+	 */
+	export let ctx = undefined;
+	/**
+	 * @type {string}
+	 */
+	export let cmt = undefined;
 
-	/** @type {{ msg: string, ctx?: string, cmt?: string, children?: Snippet, second?: Snippet, third?: Snippet, fourth?: Snippet, fifth?: Snippet }} */
-	let { msg, ctx, cmt, children, second, third, fourth, fifth } = $props();
+	let strings;
 
-	let strings = $derived(
-		t({
+	run(() => {
+		strings = $t({
 			message: msg,
 			context: ctx,
 			comment: cmt
-		}).split('#')
-	);
+		}).split('#');
 
-	$effect(() => {
 		if (strings.length > 6) {
 			console.error('svelte-i18n-lingui:', '<T> component can only have a maximum of 5 slots.');
 		}
@@ -58,6 +64,6 @@ the `t` store should be used instead for simplicity and consistency.
 -->
 
 <!-- Put in the same line to prevent automatic whtiespace insertion -->
-{strings[0] ?? ''}{@render children?.()}{strings[1] ?? ''}{@render second?.()}{strings[2] ??
-	''}{@render third?.()}{strings[3] ?? ''}{@render fourth?.()}{strings[4] ??
-	''}{@render fifth?.()}{strings[5] ?? ''}
+{strings[0] ?? ''}<slot />{strings[1] ?? ''}<slot name="1" />{strings[2] ?? ''}<slot
+	name="2"
+/>{strings[3] ?? ''}<slot name="3" />{strings[4] ?? ''}<slot name="4" />{strings[5] ?? ''}
