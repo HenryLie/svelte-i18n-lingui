@@ -227,9 +227,8 @@ Since Svelte's stores are meant to be used in Svelte components, using them insi
 <summary>v0.1.x to v0.2.x</summary>
 
 - Update Node version to at least v20
-- If the project is still on Svelte 4:
-  - You'll need to change all usages of the `<T>` component to use the new `<LegacyT>` component instead. Otherwise the syntax stays exactly the same with slots.
-- If the project is on Svelte 5:
+- Version 0.2.x only supports Svelte 5. If you're still on Svelte 4, you can still use v0.1.8.
+- On a project with Svelte 5:
   - If you're not ready to use runes mode yet, you can keep using the slots syntax by modifying the usages of `<T>` components to use the `<LegacyT>` component instead. Other than the component name and import changes, the syntax stays the same.
   - If you're migrating to runes mode, use the new `<T>` component and switch to using snippets instead of slots if you have more than one parameter in the sentence. If there is only one parameter, then there is no need to change anything since default slot and children snippet has the same syntax.
 
