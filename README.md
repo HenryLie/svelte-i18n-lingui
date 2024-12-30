@@ -181,15 +181,6 @@ To include components or elements in the middle of the message, use the provided
 
 ### MessageDescriptor Format
 
-When you need to interpolate dynamic values into the message, you can use the `values` property in the MessageDescriptor object:
-
-```svelte
-{$t({
-	message: 'Hello {name}',
-	values: { name: 'John' }
-})}
-```
-
 Sometimes we'll need to add a context info for messages that are exactly the same in the base language, but has different meanings in different places (e.g. in English `right` can either refer to direction or correctness). We can add a context by passing a message descriptor instead of plain string or literal string:
 
 ```svelte
@@ -207,6 +198,15 @@ We can also add a comment for the translators reading the message catalog e.g. t
 {$t({
 	message: 'text',
 	context: 'message for translator'
+})}
+```
+
+Also, if you need to interpolate dynamic values into the message, you can use the `values` property in the MessageDescriptor object:
+
+```svelte
+{$t({
+	message: 'Hello {name}!',
+	values: { name: 'World' }
 })}
 ```
 

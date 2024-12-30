@@ -4,7 +4,7 @@
  * @property {string} message - The message to be translated.
  * @property {string} [context] - The context of the message, will be included in the po file. The same message with different context will be extracted as separate entries, and can be translated differently.
  * @property {string} [comment] - A comment purely for giving information to the translator, won't affect translated string.
- * @property {Record<string, string>} [values] - An optional dictionary of values to be used in the message.
+ * @property {Record<string, any>} [values] - An optional dictionary of values to be used in the message.
  */
 
 import { writable, derived } from 'svelte/store';
