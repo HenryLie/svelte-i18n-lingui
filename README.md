@@ -181,6 +181,15 @@ To include components or elements in the middle of the message, use the provided
 
 ### MessageDescriptor Format
 
+When you need to interpolate dynamic values into the message, you can use the `values` property in the MessageDescriptor object:
+
+```svelte
+{$t({
+	message: 'Hello {name}',
+	values: { name: 'John' }
+})}
+```
+
 Sometimes we'll need to add a context info for messages that are exactly the same in the base language, but has different meanings in different places (e.g. in English `right` can either refer to direction or correctness). We can add a context by passing a message descriptor instead of plain string or literal string:
 
 ```svelte
@@ -237,7 +246,7 @@ Since Svelte's stores are meant to be used in Svelte components, using them insi
 ## Known issues
 
 - When extracting to Lingui's PO format and enabling the `origins` option, the line numbers are always empty for `<T>` components usage. The line numbers work on any other syntax.
-	- When working in a larger project in a team, I suggest disabling origins on the PO file anyway, since they cause a lot of line changes in diff view every time a string is added/reused. This might cause merge conflicts when two people are modifying or reusing the same string, for example.
+  - When working in a larger project in a team, I suggest disabling origins on the PO file anyway, since they cause a lot of line changes in diff view every time a string is added/reused. This might cause merge conflicts when two people are modifying or reusing the same string, for example.
 
 ## Contributing
 
