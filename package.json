@@ -20,10 +20,10 @@
 	"scripts": {
 		"prepare": "svelte-kit sync",
 		"dev": "vite dev",
-		"build": "vite build && npm run package",
+		"build": "vite build && pnpm package",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
-		"prepublishOnly": "npm run package",
+		"prepublishOnly": "pnpm package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
@@ -89,5 +89,6 @@
 		"@typescript-eslint/typescript-estree": "^8.12.2",
 		"estree-walker-ts": "^1.0.1",
 		"js-sha256": "^0.10.1"
-	}
+	},
+	"packageManager": "pnpm@10.0.0+sha256.43abf6e720fb7bc53c591b0862605c7d323d0a9d2dd33bcac07b062e13cf4948"
 }
