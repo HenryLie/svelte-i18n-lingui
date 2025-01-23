@@ -201,6 +201,15 @@ We can also add a comment for the translators reading the message catalog e.g. t
 })}
 ```
 
+Also, if you need to interpolate dynamic values into the message, you can use the `values` property in the MessageDescriptor object:
+
+```svelte
+{$t({
+	message: 'Hello {name}!',
+	values: { name: 'World' }
+})}
+```
+
 ### Plurals
 
 To provide different messages for text with numbers, use the provided `$plural` store:
