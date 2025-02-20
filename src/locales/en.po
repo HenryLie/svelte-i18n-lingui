@@ -21,7 +21,7 @@ msgstr "{num, plural, =5 {five items} one {# item} other {# items}}"
 msgid "{num, plural, one {# item} other {# items}}"
 msgstr "{num, plural, one {# item} other {# items}}"
 
-#: src/routes/+page.svelte:55
+#: src/routes/+page.svelte:56
 msgid "{num, plural, one {There is # message.} other {There are # messages.}}"
 msgstr "{num, plural, one {There is # message.} other {There are # messages.}}"
 
@@ -45,7 +45,7 @@ msgid "Click # to learn more"
 msgstr "Click # to learn more"
 
 #. This is a comment for the translator
-#: src/routes/+page.svelte:84
+#: src/routes/+page.svelte:85
 msgid "Commented message"
 msgstr "Commented message"
 
@@ -53,33 +53,33 @@ msgstr "Commented message"
 msgid "defineMessage text"
 msgstr "defineMessage text"
 
+#: src/routes/+page.svelte:42
+#: src/routes/+page.svelte:115
+#: src/routes/+page.svelte:115
 #: src/fixtures/TestComponent.svelte:18
-#: src/routes/+page.svelte:41
-#: src/routes/+page.svelte:109
-#: src/routes/+page.svelte:109
 msgid "hello"
 msgstr "hello"
 
-#: src/routes/+page.svelte:42
-#: src/routes/+page.svelte:50
+#: src/routes/+page.svelte:43
+#: src/routes/+page.svelte:51
 msgid "Hello, {0}!"
 msgstr "Hello, {0}!"
 
-#: src/routes/+page.svelte:72
+#: src/routes/+page.svelte:73
 msgctxt "A"
 msgid "Message with context"
 msgstr "Message with context"
 
-#: src/routes/+page.svelte:78
+#: src/routes/+page.svelte:79
 msgctxt "B"
 msgid "Message with context"
 msgstr "Message with context"
 
-#: src/routes/+page.svelte:15
+#: src/routes/+page.svelte:16
 msgid "msgSvelte"
 msgstr "msgSvelte"
 
-#: src/routes/+page.svelte:89
+#: src/routes/+page.svelte:90
 msgid "Svelte tutorial"
 msgstr "Svelte tutorial"
 
@@ -87,6 +87,6 @@ msgstr "Svelte tutorial"
 msgid "test ts"
 msgstr "test ts"
 
-#: src/routes/+page.svelte:42
+#: src/routes/+page.svelte:43
 msgid "world"
 msgstr "world"

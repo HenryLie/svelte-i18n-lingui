@@ -12,8 +12,8 @@
 		$t({
 			message: msg,
 			context: ctx,
-			comment: cmt
-		}).split('#')
+			comment: cmt,
+		}).split('#'),
 	);
 
 	$effect(() => {

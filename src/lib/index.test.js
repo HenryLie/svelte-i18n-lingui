@@ -20,7 +20,7 @@ describe('svelte-i18n-lingui', () => {
 
 	describe.each([
 		{ name: 't store', t: get(t) },
-		{ name: 'gt', t: gt }
+		{ name: 'gt', t: gt },
 	])('$name', ({ t }) => {
 		it('returns the original message if no translation is available', () => {
 			expect(t`hello`).toBe('hello');
@@ -53,14 +53,14 @@ describe('svelte-i18n-lingui', () => {
 			});
 			it('can translate messages in MessageDescriptor with both context and comment', () => {
 				expect(
-					t({ message: 'right', context: 'direction', comment: 'The direction, to the right.' })
+					t({ message: 'right', context: 'direction', comment: 'The direction, to the right.' }),
 				).toBe('右');
 				expect(
 					t({
 						message: 'right',
 						context: 'correct',
-						comment: "The word for correctness e.g. that's right"
-					})
+						comment: "The word for correctness e.g. that's right",
+					}),
 				).toBe('正しい');
 			});
 		});
@@ -71,7 +71,7 @@ describe('svelte-i18n-lingui', () => {
 			const descriptor = {
 				message: 'This is the message.',
 				context: 'This is the context.',
-				comment: 'Comment for translator'
+				comment: 'Comment for translator',
 			};
 			expect(msg(descriptor)).toBe(descriptor);
 		});
@@ -85,7 +85,7 @@ describe('svelte-i18n-lingui', () => {
 		it('returns the message variations object as-is', () => {
 			const variations = {
 				one: 'There is # item.',
-				other: 'There are # items.'
+				other: 'There are # items.',
 			};
 			expect(msgPlural(variations)).toBe(variations);
 		});
@@ -93,20 +93,20 @@ describe('svelte-i18n-lingui', () => {
 
 	describe.each([
 		{ name: 'plural store', plural: get(plural) },
-		{ name: 'gPlural', plural: gPlural }
+		{ name: 'gPlural', plural: gPlural },
 	])('$name', ({ plural }) => {
 		it('returns the original message if no translation is available', () => {
 			expect(plural(2, { one: 'There is # item.', other: 'There are # items.' })).toBe(
-				'There are 2 items.'
+				'There are 2 items.',
 			);
 			expect(plural(1, { one: 'There is # item.', other: 'There are # items.' })).toBe(
-				'There is 1 item.'
+				'There is 1 item.',
 			);
 			expect(plural(0, { one: 'There is # item.', other: 'There are # items.' })).toBe(
-				'There are 0 items.'
+				'There are 0 items.',
 			);
 			expect(plural(-1, { one: 'There is # item.', other: 'There are # items.' })).toBe(
-				'There is -1 item.'
+				'There is -1 item.',
 			);
 		});
 
@@ -117,16 +117,16 @@ describe('svelte-i18n-lingui', () => {
 
 			it('returns the correct translated message based on the number passed in', () => {
 				expect(plural(2, { one: 'There is # item.', other: 'There are # items.' })).toBe(
-					'2 個のアイテムがあります。'
+					'2 個のアイテムがあります。',
 				);
 				expect(plural(1, { one: 'There is # item.', other: 'There are # items.' })).toBe(
-					'1 個のアイテムがあります。'
+					'1 個のアイテムがあります。',
 				);
 				expect(plural(0, { one: 'There is # item.', other: 'There are # items.' })).toBe(
-					'0 個のアイテムがあります。'
+					'0 個のアイテムがあります。',
 				);
 				expect(plural(-1, { one: 'There is # item.', other: 'There are # items.' })).toBe(
-					'-1 個のアイテムがあります。'
+					'-1 個のアイテムがあります。',
 				);
 			});
 
@@ -134,8 +134,8 @@ describe('svelte-i18n-lingui', () => {
 				expect(
 					gt({
 						message: plural(2, { one: 'There is # item.', other: 'There are # items.' }),
-						context: 'messages'
-					})
+						context: 'messages',
+					}),
 				).toBe('2件があります。');
 			});
 		});

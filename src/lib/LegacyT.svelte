@@ -20,7 +20,7 @@
 		strings = $t({
 			message: msg,
 			context: ctx,
-			comment: cmt
+			comment: cmt,
 		}).split('#');
 
 		if (strings.length > 6) {

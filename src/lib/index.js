@@ -35,7 +35,7 @@ function createLocale(defaultLocale = 'default', defaultMessages = {}) {
 		set: (locale, messages) => {
 			i18n.loadAndActivate({ locale, messages });
 			set(locale);
-		}
+		},
 	};
 }
 export const locale = createLocale();

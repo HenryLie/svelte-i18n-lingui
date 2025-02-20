@@ -55,7 +55,7 @@
 <p>
 	Plurals: {$plural(count, {
 		one: 'There is # message.',
-		other: 'There are # messages.'
+		other: 'There are # messages.',
 	})}
 </p>
 <p>
@@ -72,13 +72,13 @@
 	<br />
 	{$t({
 		message: 'Message with context',
-		context: 'A'
+		context: 'A',
 	})}
 
 	<br />
 	{$t({
 		message: 'Message with context',
-		context: 'B'
+		context: 'B',
 	})}
 </p>
 <p>

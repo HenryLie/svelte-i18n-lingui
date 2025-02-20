@@ -55,13 +55,14 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"@lingui/core": "^4.5.0",
+		"@lingui/core": ">=4",
+		"@lingui/cli": ">=4",
 		"svelte": ">=4"
 	},
 	"devDependencies": {
-		"@lingui/cli": "^4.5.0",
-		"@lingui/conf": "^4.5.0",
-		"@lingui/core": "^4.5.0",
+		"@lingui/cli": "^5.2.0",
+		"@lingui/conf": "^5.2.0",
+		"@lingui/core": "^5.2.0",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.5.27",
 		"@sveltejs/package": "^2.3.7",
@@ -90,5 +91,8 @@
 		"estree-walker-ts": "^1.0.1",
 		"js-sha256": "^0.10.1"
 	},
-	"packageManager": "pnpm@10.0.0+sha256.43abf6e720fb7bc53c591b0862605c7d323d0a9d2dd33bcac07b062e13cf4948"
+	"packageManager": "pnpm@10.0.0+sha256.43abf6e720fb7bc53c591b0862605c7d323d0a9d2dd33bcac07b062e13cf4948",
+	"pnpm.onlyBuiltDependencies": [
+		"@sveltejs/kit"
+	]
 }

@@ -1,7 +1,7 @@
 /** @typedef {{ match(filename: string) => boolean, extract(filename: string, code: string, onMessageExtracted: (msg: ExtractedMessage) => void, ctx?: ExtractorCtx)=> Promise<void> | void }} ExtractorType */
 
 // import fs from 'fs';
-import { preprocess, parse } from 'svelte/compiler';
+import { parse } from 'svelte/compiler';
 import { walk } from 'estree-walker-ts';
 import { parse as tsParse } from '@typescript-eslint/typescript-estree';
 import { generateMessageId } from './generateMessageId.js';
@@ -17,7 +17,8 @@ const extractFromTaggedTemplate = (node, filename, onMessageExtracted) => {
 	onMessageExtracted({
 		id: generateMessageId(message),
 		message,
-		origin: [filename, start.line, start.column]
+		origin: [filename, start.line, start.column],
+		placeholders: {},
 	});
 };
 
@@ -39,7 +40,8 @@ const extractFromCallExpression = (node, filename, onMessageExtracted) => {
 			message,
 			context,
 			comment,
-			origin: [filename, start.line, start.column]
+			origin: [filename, start.line, start.column],
+			placeholders: {},
 		});
 	}
 };
@@ -73,7 +75,8 @@ const extractPlurals = (tags, node, filename, onMessageExtracted) => {
 		onMessageExtracted({
 			id: generateMessageId(message),
 			message,
-			origin: [filename, start.line, start.column]
+			origin: [filename, start.line, start.column],
+			placeholders: {},
 			// The actual number's value doesn't matter when extracting so we don't have to supply it
 		});
 	}
@@ -96,7 +99,8 @@ const extractPluralMessages = (tags, node, filename, onMessageExtracted) => {
 		onMessageExtracted({
 			id: generateMessageId(message),
 			message,
-			origin: [filename, start.line, start.column]
+			origin: [filename, start.line, start.column],
+			placeholders: {},
 		});
 	}
 };
@@ -114,7 +118,8 @@ const extractComponent = (node, filename, onMessageExtracted) => {
 			message,
 			context,
 			comment,
-			origin: [filename, start.line, start.column]
+			origin: [filename, start.line, start.column],
+			placeholders: {},
 		});
 	}
 };
@@ -136,12 +141,12 @@ export const svelteExtractor = {
 					extractPlurals(['$plural'], node, filename, onMessageExtracted);
 					extractPluralMessages(['msgPlural'], node, filename, onMessageExtracted);
 					extractComponent(node, filename, onMessageExtracted);
-				}
+				},
 			});
 		} catch (err) {
 			console.log(`Error at ${filename}:`, err);
 		}
-	}
+	},
 };
 
 /**
@@ -155,7 +160,7 @@ export const jstsExtractor = {
 		try {
 			const ast = tsParse(source, {
 				filePath: filename,
-				loc: true
+				loc: true,
 			});
 
 			// fs.writeFileSync('ast.json', JSON.stringify(ast, null, 2));
@@ -165,10 +170,10 @@ export const jstsExtractor = {
 					extractTags(['gt', 'msg'], node, filename, onMessageExtracted);
 					extractPlurals(['gPlural'], node, filename, onMessageExtracted);
 					extractPluralMessages(['msgPlural'], node, filename, onMessageExtracted);
-				}
+				},
 			});
 		} catch (err) {
 			console.log(`Error at ${filename}:`, err);
 		}
-	}
+	},
 };
