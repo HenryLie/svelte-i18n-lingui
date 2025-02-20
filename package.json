@@ -55,7 +55,8 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"@lingui/core": "^4.5.0",
+		"@lingui/core": ">=4",
+		"@lingui/cli": ">=4",
 		"svelte": ">=4"
 	},
 	"devDependencies": {
