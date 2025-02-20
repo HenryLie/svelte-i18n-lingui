@@ -21,14 +21,6 @@
 		local = getText();
 	});
 
-	let pathMap = $state({
-		'/': $t`Home`,
-		'/convert': `Convert`,
-		'/search': `Search`,
-		'/agents': `Agents`,
-		'/settings': `Settings`
-	});
-
 	let consumeMsg = $derived($t(msgInSvelte));
 
 	async function setLocale(lang) {
