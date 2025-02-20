@@ -72,10 +72,10 @@ export default {
 	catalogs: [
 		{
 			path: 'src/locales/{locale}',
-			include: ['src/lib', 'src/routes']
-		}
+			include: ['src/lib', 'src/routes'],
+		},
 	],
-	extractors: [jstsExtractor, svelteExtractor]
+	extractors: [jstsExtractor, svelteExtractor],
 };
 ```
 
@@ -186,7 +186,7 @@ Sometimes we'll need to add a context info for messages that are exactly the sam
 ```svelte
 {$t({
 	message: 'right',
-	context: 'direction'
+	context: 'direction',
 })}
 ```
 
@@ -197,7 +197,7 @@ We can also add a comment for the translators reading the message catalog e.g. t
 ```svelte
 {$t({
 	message: 'text',
-	context: 'message for translator'
+	context: 'message for translator',
 })}
 ```
 
@@ -206,7 +206,7 @@ Also, if you need to interpolate dynamic values into the message, you can use th
 ```svelte
 {$t({
 	message: 'Hello {name}!',
-	values: { name: 'World' }
+	values: { name: 'World' },
 })}
 ```
 
@@ -217,7 +217,7 @@ To provide different messages for text with numbers, use the provided `$plural` 
 ```svelte
 {$plural(count, {
 	one: '# item',
-	other: '# items'
+	other: '# items',
 })}
 ```
 
@@ -246,7 +246,7 @@ Since Svelte's stores are meant to be used in Svelte components, using them insi
 ## Known issues
 
 - When extracting to Lingui's PO format and enabling the `origins` option, the line numbers are always empty for `<T>` components usage. The line numbers work on any other syntax.
-	- When working in a larger project in a team, I suggest disabling origins on the PO file anyway, since they cause a lot of line changes in diff view every time a string is added/reused. This might cause merge conflicts when two people are modifying or reusing the same string, for example.
+  - When working in a larger project in a team, I suggest disabling origins on the PO file anyway, since they cause a lot of line changes in diff view every time a string is added/reused. This might cause merge conflicts when two people are modifying or reusing the same string, for example.
 
 ## Contributing
 

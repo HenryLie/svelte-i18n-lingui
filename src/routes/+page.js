@@ -5,18 +5,18 @@ const gPluralText = (count = 2 + 3) =>
 	gPlural(count, {
 		'=5': 'five items',
 		one: '# item',
-		other: '# items'
+		other: '# items',
 	});
 
 const msgPluralText = msgPlural({
 	one: '# item',
-	other: '# items'
+	other: '# items',
 });
 
 export async function load() {
 	return {
 		msgText,
 		gPluralText,
-		msgPluralText
+		msgPluralText,
 	};
 }
