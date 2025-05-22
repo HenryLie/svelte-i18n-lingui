@@ -175,4 +175,3 @@ export const msgPlural = (variations) => variations;
 export const plural = processPlural;
 
 export { default as T } from './T.svelte';
-export { default as LegacyT } from './LegacyT.svelte';

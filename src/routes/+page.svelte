@@ -2,7 +2,6 @@
 	import { locale, t, msg, plural } from '$lib';
 	import { getText } from '../fixtures/random.ts';
 	import T from '$lib/T.svelte';
-	import LegacyT from '$lib/LegacyT.svelte';
 	import TestComponent from '../fixtures/TestComponent.svelte';
 	import { setLocale } from '../helpers/util';
 
