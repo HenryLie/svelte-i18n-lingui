@@ -1,7 +1,7 @@
 /** @typedef {{ match(filename: string) => boolean, extract(filename: string, code: string, onMessageExtracted: (msg: ExtractedMessage) => void, ctx?: ExtractorCtx)=> Promise<void> | void }} ExtractorType */
 
 // import fs from 'fs';
-import { preprocess, parse } from 'svelte/compiler';
+import { parse } from 'svelte/compiler';
 import { walk } from 'estree-walker-ts';
 import { parse as tsParse } from '@typescript-eslint/typescript-estree';
 import { generateMessageId } from './generateMessageId.js';
@@ -18,6 +18,7 @@ const extractFromTaggedTemplate = (node, filename, onMessageExtracted) => {
 		id: generateMessageId(message),
 		message,
 		origin: [filename, start.line, start.column],
+		placeholders: {},
 	});
 };
 
@@ -40,6 +41,7 @@ const extractFromCallExpression = (node, filename, onMessageExtracted) => {
 			context,
 			comment,
 			origin: [filename, start.line, start.column],
+			placeholders: {},
 		});
 	}
 };
@@ -74,6 +76,7 @@ const extractPlurals = (tags, node, filename, onMessageExtracted) => {
 			id: generateMessageId(message),
 			message,
 			origin: [filename, start.line, start.column],
+			placeholders: {},
 			// The actual number's value doesn't matter when extracting so we don't have to supply it
 		});
 	}
@@ -97,6 +100,7 @@ const extractPluralMessages = (tags, node, filename, onMessageExtracted) => {
 			id: generateMessageId(message),
 			message,
 			origin: [filename, start.line, start.column],
+			placeholders: {},
 		});
 	}
 };
@@ -115,6 +119,7 @@ const extractComponent = (node, filename, onMessageExtracted) => {
 			context,
 			comment,
 			origin: [filename, start.line, start.column],
+			placeholders: {},
 		});
 	}
 };
