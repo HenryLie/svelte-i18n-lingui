@@ -55,13 +55,14 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"@lingui/core": "^4.5.0",
-		"svelte": ">=5"
+		"@lingui/core": ">=4",
+		"@lingui/cli": ">=4",
+		"svelte": ">=4"
 	},
 	"devDependencies": {
-		"@lingui/cli": "^4.5.0",
-		"@lingui/conf": "^4.5.0",
-		"@lingui/core": "^4.5.0",
+		"@lingui/cli": "^5.2.0",
+		"@lingui/conf": "^5.2.0",
+		"@lingui/core": "^5.2.0",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.5.27",
 		"@sveltejs/package": "^2.3.7",
