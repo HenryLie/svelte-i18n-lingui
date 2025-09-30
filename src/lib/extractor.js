@@ -17,7 +17,7 @@ const extractFromTaggedTemplate = (node, filename, onMessageExtracted) => {
 	onMessageExtracted({
 		id: generateMessageId(message),
 		message,
-		origin: [filename, start.line, start.column]
+		origin: [filename, start.line, start.column],
 	});
 };
 
@@ -39,7 +39,7 @@ const extractFromCallExpression = (node, filename, onMessageExtracted) => {
 			message,
 			context,
 			comment,
-			origin: [filename, start.line, start.column]
+			origin: [filename, start.line, start.column],
 		});
 	}
 };
@@ -73,7 +73,7 @@ const extractPlurals = (tags, node, filename, onMessageExtracted) => {
 		onMessageExtracted({
 			id: generateMessageId(message),
 			message,
-			origin: [filename, start.line, start.column]
+			origin: [filename, start.line, start.column],
 			// The actual number's value doesn't matter when extracting so we don't have to supply it
 		});
 	}
@@ -96,7 +96,7 @@ const extractPluralMessages = (tags, node, filename, onMessageExtracted) => {
 		onMessageExtracted({
 			id: generateMessageId(message),
 			message,
-			origin: [filename, start.line, start.column]
+			origin: [filename, start.line, start.column],
 		});
 	}
 };
@@ -114,7 +114,7 @@ const extractComponent = (node, filename, onMessageExtracted) => {
 			message,
 			context,
 			comment,
-			origin: [filename, start.line, start.column]
+			origin: [filename, start.line, start.column],
 		});
 	}
 };
@@ -136,12 +136,12 @@ export const svelteExtractor = {
 					extractPlurals(['plural'], node, filename, onMessageExtracted);
 					extractPluralMessages(['msgPlural'], node, filename, onMessageExtracted);
 					extractComponent(node, filename, onMessageExtracted);
-				}
+				},
 			});
 		} catch (err) {
 			console.log(`Error at ${filename}:`, err);
 		}
-	}
+	},
 };
 
 /**
@@ -155,7 +155,7 @@ export const jstsExtractor = {
 		try {
 			const ast = tsParse(source, {
 				filePath: filename,
-				loc: true
+				loc: true,
 			});
 
 			// fs.writeFileSync('ast.json', JSON.stringify(ast, null, 2));
@@ -165,10 +165,10 @@ export const jstsExtractor = {
 					extractTags(['t', 'msg'], node, filename, onMessageExtracted);
 					extractPlurals(['plural'], node, filename, onMessageExtracted);
 					extractPluralMessages(['msgPlural'], node, filename, onMessageExtracted);
-				}
+				},
 			});
 		} catch (err) {
 			console.log(`Error at ${filename}:`, err);
 		}
-	}
+	},
 };

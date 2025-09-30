@@ -13,10 +13,10 @@ const config = {
 	catalogs: [
 		{
 			path: 'src/locales/{locale}',
-			include: ['src/lib', 'src/routes', 'src/fixtures']
-		}
+			include: ['src/lib', 'src/routes', 'src/fixtures'],
+		},
 	],
-	extractors: [jstsExtractor, svelteExtractor]
+	extractors: [jstsExtractor, svelteExtractor],
 };
 
 export default config;

@@ -1,7 +1,6 @@
 <script>
-  import { locale, t } from '$lib';
-  import { setLocale } from '../../helpers/util';
-
+	import { locale, t } from '$lib';
+	import { setLocale } from '../../helpers/util';
 </script>
 
 <a href="/">HOME</a>

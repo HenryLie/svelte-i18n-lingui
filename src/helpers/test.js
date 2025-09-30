@@ -19,5 +19,5 @@ export const messageCatalog = convertMessageCatalogToIdKeys({
 	'{num, plural, one {There is # item.} other {There are # items.}}':
 		'{num, plural, one {# 個のアイテムがあります。} other {# 個のアイテムがあります。}}',
 	'{num, plural, one {There is # item.} other {There are # items.}}|messages':
-		'{num, plural, other {# 件があります。}}'
+		'{num, plural, other {# 件があります。}}',
 });

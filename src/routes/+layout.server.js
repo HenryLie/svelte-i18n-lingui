@@ -5,6 +5,6 @@ export async function load(params) {
 		.find((lang) => lang.includes('ja') || lang.includes('en'));
 
 	return {
-		lang: firstMatch.includes('ja') ? 'ja' : 'en'
+		lang: firstMatch.includes('ja') ? 'ja' : 'en',
 	};
 }
