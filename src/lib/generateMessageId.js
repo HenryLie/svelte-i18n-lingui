@@ -9,7 +9,10 @@ const UNIT_SEPARATOR = '\u001F';
  * @param {string} msg
  */
 export function generateMessageId(msg, context = '') {
-	return hexToBase64(sha256(msg + UNIT_SEPARATOR + (context || ''))).slice(0, 6);
+	return hexToBase64(sha256(msg + UNIT_SEPARATOR + (context || ''))).slice(0, 6)
+		.replaceAll("/", "_")
+		.replaceAll("+", "-")
+		.replace(/=+$/, "");
 }
 
 /**
